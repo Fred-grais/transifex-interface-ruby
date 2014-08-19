@@ -38,7 +38,7 @@ describe Transifex::Projects do
   describe "Fetch" do
     it "should not raise an error and return an array of hash" do
       fetched_projects = nil
-      expect{ fetched_projects = Transifex::Projects.new.fetch}.to_not raise_error
+      expect{ fetched_projects = Transifex::Projects.fetch}.to_not raise_error
       expect(fetched_projects).to be_a_kind_of(Array)
       expect(fetched_projects).not_to match_array([]) 
       expect(fetched_projects.first).to be_a_kind_of(Hash)

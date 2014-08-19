@@ -5,6 +5,9 @@ module Transifex
 
     CREATE_REQUIRED_PARAMS = [:slug, :name, :description, :source_language_code, :repository_url, :private]
 
+    def self.fetch
+      Transifex::Projects.new.fetch      
+    end
 
     def fetch_with_details
       options = {:details => true}
