@@ -5,8 +5,8 @@ require_relative '../lib/transifex'
 
 def reset_transifex_configuration
   Transifex.configure do |c|
-    c.client_login = ''
-    c.client_secret = ''    
+    c.client_login = 'frederic.grais@gmail.com'
+    c.client_secret = 'futur123'    
   end
 end
 

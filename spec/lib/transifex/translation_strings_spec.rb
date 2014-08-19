@@ -47,7 +47,7 @@ describe Transifex::ResourceComponents::TranslationComponents::Strings do
       expect{ @resource.translation('fr').strings.update({:translation => "lol"}) }.to raise_error(Transifex::MissingParametersError)
     end
     it "should not raise an error and update the specified translation string" do
-      expect{ @resource.translation('fr').strings.update({:key => "routes.mercury_editor", :context => "", :translation => "lol"}) }.to_not raise_error
+      expect{ @resource.translation('fr').strings.update({:key => "routes.mercury_editor", :translation => "lol"}) }.to_not raise_error
     end
     it "should not raise an error and update multiple translation strings" do
       params = [{:key => "routes.mercury_editor", :context => "", :translation => "lol"}, {:key => "date.abbr_day_names", :translation => "lol"}]
