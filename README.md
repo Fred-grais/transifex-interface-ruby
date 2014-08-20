@@ -232,7 +232,7 @@ First, instantiate a project (see Project/instantiation)
 You can fetch all the resources of projects:
 
 ```ruby
-transifex_project.resources
+transifex_project.resources.fetch
 ```
 
 #### Create
