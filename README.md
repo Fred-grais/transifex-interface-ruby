@@ -242,14 +242,16 @@ You can create a new resource for the specified project:
 Without a file (you have to send the content as a string) :
 
 ```ruby
-transifex_project.resources.create({:slug => "p", :name => "without_file", :i18n_type => "TXT", :content => "test"})
+params = {:slug => "project_slug", :name => "Project created with content as a string", :i18n_type => "TXT", :content => "test"}
+transifex_project.resources.create(params)
 ```
 
 With a file: (YAML currently supported)
 
 ```ruby
+params = {:slug => "project_slug", :name => "Project created with a file", :i18n_type => "YAML", :content => 'path/to/your/file.yml'}
 options = {:trad_from_file => true}
-transifex_project.resources.create({:slug => "q", :name => "with_file", :i18n_type => "YAML", :content => 'path/to/your/file.yml'}
+transifex_project.resources.create(params, options)
 ```
 
 ### Resource (Symbolize a single resource of a project)
@@ -418,8 +420,8 @@ You can update some informations of a translation string (see documentation for 
 You must specify at least the key of the translation, and can add a context(by default empty).
 
 ```ruby
-options = {:key => "welcome", :context => "context"}
-resource_translation_strings.update({:key => "welcome", :context => "", :translation => "new_translation"})
+params = {:key => "welcome", :context => "", :translation => "new_translation"}
+resource_translation_strings.update(params)
 ```
 ### Resource Translations String (Symbolize a single string)
 
@@ -457,7 +459,7 @@ It allow you to retrieve meta-data on a source language string and update them.
 Context is empty by default.
 
 ```ruby
-resource_source_string = project_resource.source(key, context)
+resource_source_string = project_resource.source('key', 'context')
 ```
 
 #### Fetch
