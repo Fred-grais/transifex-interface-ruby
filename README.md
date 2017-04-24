@@ -242,14 +242,14 @@ You can create a new resource for the specified project:
 Without a file (you have to send the content as a string) :
 
 ```ruby
-params = {:slug => "project_slug", :name => "Project created with content as a string", :i18n_type => "TXT", :content => "test"}
+params = {:slug => "resource_slug", :name => "Resource created with content as a string", :i18n_type => "TXT", :content => "test"}
 transifex_project.resources.create(params)
 ```
 
 With a file: (YAML currently supported)
 
 ```ruby
-params = {:slug => "project_slug", :name => "Project created with a file", :i18n_type => "YAML", :content => 'path/to/your/file.yml'}
+params = {:slug => "resource_slug", :name => "Resource created with a file", :i18n_type => "YAML", :content => 'path/to/your/file.yml'}
 options = {:trad_from_file => true}
 transifex_project.resources.create(params, options)
 ```
