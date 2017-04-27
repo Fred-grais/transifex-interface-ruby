@@ -1,4 +1,4 @@
-require_relative "../../spec_helper"
+require "spec_helper"
 
 describe Transifex::Resources do 
 
@@ -8,7 +8,8 @@ describe Transifex::Resources do
   end
 
   it "should raise an error if instanciated without a project_slug" do
-    expect{ Transifex::Resources.new() }.to raise_error(Transifex::MissingParametersError)
+    expect{ Transifex::Resources.new() }.to raise_error(Transifex::MissingParametersError).
+      with_message("The following attributes are missing: project_slug")
   end
 
   describe "Fetch" do
