@@ -30,4 +30,8 @@ module ContentHelper
       }
     ]
   end
+
+  def successful_resource_creation
+    [1, 0, 0]
+  end
 end

@@ -27,21 +27,30 @@ describe Transifex::Resources do
 
   describe "Create" do
     it "should raise an error if required parameters are missing" do
-      expect{ @correct_project.resources.create }.to raise_error(Transifex::MissingParametersError)
-    end  
-
-    it "should create a new resource for the project without using a file" do
-      expect{ @correct_project.resources.create({:slug => "p", :name => "without_file", :i18n_type => "TXT", :content => "test"}) }.to_not raise_error
+      expect { project.resources.create }.to raise_error(Transifex::MissingParametersError)
+        .with_message("The following attributes are missing: slug, name, i18n_type, content")
     end
 
-    it "should create a new resource for the project using a file" do
-      options = {:trad_from_file => true}      
-      expect{ @correct_project.resources.create({:slug => "q", :name => "with_file", :i18n_type => "YAML", :content => get_yaml_source_trad_file_path('en')}, options) }.to_not raise_error
-    end
-  end
+    it "should create a new resource in the project without using a file" do
+      resource_attributes = {slug: "string_resource", name: "without file", i18n_type: "TXT", content: "test"}
 
-  after(:all) do
-    @correct_project.resource("q").delete
-    @correct_project.resource("p").delete
+      VCR.use_cassette "resources/create_from_string" do
+        expect(project.resources.create(resource_attributes)).to eq successful_resource_creation
+      end
+    end
+
+    it "should create a new resource in the project using a file" do
+      resource_attributes = {
+        slug: "file_resource",
+        name: "with file",
+        i18n_type: "YML",
+        content: get_yaml_source_trad_file_path("eo")
+      }
+      options = {trad_from_file: true}
+
+      VCR.use_cassette "resources/create_from_file" do
+        expect(project.resources.create(resource_attributes, options)).to eq successful_resource_creation
+      end
+    end
   end
 end

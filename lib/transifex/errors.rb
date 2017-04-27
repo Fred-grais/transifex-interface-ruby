@@ -4,7 +4,7 @@ module Transifex
 
   class MissingParametersError < Error
     def initialize(*missing_attributes)
-      super("The following attributes are missing: " + missing_attributes.join(','))
+      super("The following attributes are missing: " + missing_attributes.join(", "))
     end
   end
 

@@ -1,0 +1,54 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://www.transifex.com/api/2/project/ruby-client/resources
+    body:
+      encoding: UTF-8
+      string: '{"slug":"string_resource","name":"without file","i18n_type":"TXT","content":"test"}'
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      User-Agent:
+      - Transifex-interface-ruby/0.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Authorization:
+      - Basic bS5naWFtYml0dG9AZnJlZWdvd2ViLml0Om1vbGxpXzAx
+  response:
+    status:
+      code: 201
+      message: CREATED
+    headers:
+      Server:
+      - nginx
+      Vary:
+      - Authorization, Host, Accept-Language, Cookie
+      Cache-Control:
+      - max-age=0
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Thu, 27 Apr 2017 16:42:02 GMT
+      Expires:
+      - Thu, 27 Apr 2017 16:42:02 GMT
+      Transfer-Encoding:
+      - chunked
+      Content-Language:
+      - en
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - X-Mapping-fjhppofk=2F71BA404CBE394603A72279804CAC7D; path=/
+      Last-Modified:
+      - Thu, 27 Apr 2017 16:42:02 GMT
+      X-Frame-Options:
+      - SAMEORIGIN
+    body:
+      encoding: UTF-8
+      string: "[\n    1, \n    0, \n    0\n]"
+    http_version: 
+  recorded_at: Thu, 27 Apr 2017 16:42:02 GMT
+recorded_with: VCR 3.0.3
