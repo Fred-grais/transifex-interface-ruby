@@ -1,4 +1,4 @@
-require_relative "../../spec_helper"
+require "spec_helper"
 
 describe Transifex::ResourceComponents::Content do
   let(:project) { Transifex::Project.new("ruby-client") }
@@ -13,9 +13,7 @@ describe Transifex::ResourceComponents::Content do
   describe "Fetch" do
     it "should retrieve the resource content as a hash" do
       VCR.use_cassette "resource/fetch_content_as_hash" do
-        expect(resource.content.fetch).to eq(
-          {"content" => %Q{eo:\n  test_string: "test string"\n}, "mimetype" => "text/plain"}
-        )
+        expect(resource.content.fetch).to eq resource_content_hash
       end
     end
 
