@@ -1,11 +1,7 @@
 require "spec_helper"
 
-describe Transifex::Resources do 
-
-  before(:all) do 
-    @correct_project = Transifex::Project.new("projet-de-test-1")
-    @wrong_project = Transifex::Project.new("lll")
-  end
+describe Transifex::Resources do
+  let(:project) { Transifex::Project.new("ruby-client") }
 
   it "should raise an error if instanciated without a project_slug" do
     expect{ Transifex::Resources.new() }.to raise_error(Transifex::MissingParametersError).
@@ -13,19 +9,19 @@ describe Transifex::Resources do
   end
 
   describe "Fetch" do
-    it "should not raise any error and return a hash" do
-      resources_instance = @correct_project.resources
-      fetched_resources = nil
-      expect{ fetched_resources = resources_instance.fetch }.to_not raise_error
-      expect(fetched_resources).to be_a_kind_of(Array)
-      expect(fetched_resources.first).to be_a_kind_of(Hash)
-      expect(fetched_resources.first.keys).to contain_exactly("source_language_code", "name", "i18n_type", "priority", "slug", "categories")
+    it "should retrieve the resources as an array of hashes, one for each resource" do
+      VCR.use_cassette "resources/fetch_as_array" do
+        expect(project.resources.fetch).to eq all_project_resources_array
+      end
     end
 
-    it "should raise an error if project doesn't exist" do
-      resources_instance = @wrong_project.resources
-      fetched_resources = nil
-      expect{ fetched_resources = resources_instance.fetch }.to raise_error(Transifex::TransifexError)
+    it "should raise an error if the project doesn't exist" do
+      non_existing_project = Transifex::Project.new("omg")
+
+      VCR.use_cassette "resources/non_existing_project" do
+        expect { non_existing_project.resources.fetch }.to raise_error(Transifex::TransifexError)
+          .with_message("Not Found")
+      end
     end
   end
 
