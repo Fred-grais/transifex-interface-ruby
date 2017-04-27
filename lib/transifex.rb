@@ -31,13 +31,13 @@ require "transifex/resources"
 
 
 module Transifex
-  
-  class Configuration 
+
+  class Configuration
     attr_accessor :client_login, :client_secret, :root_url
 
     def root_url
-      @root_url ||= "https://www.transifex.com/api/2"      
-    end 
+      @root_url ||= "https://www.transifex.com/api/2"
+    end
   end
 
   class << self
@@ -50,7 +50,7 @@ module Transifex
   end
 
   def self.build_request_url(url='')
-    URI(self.configuration.root_url + url)    
+    URI(self.configuration.root_url + url)
   end
 
   def self.query_api(method, url, params={})
@@ -72,16 +72,16 @@ module Transifex
     unless (res.is_a? Net::HTTPOK) || (res.is_a? Net::HTTPCreated) || (res.is_a? Net::HTTPNoContent)
       error = TransifexError.new(uri, res.code, data)
       raise error
-    end    
+    end
 
     data
   end
 
-  def self.request_headers    
-    request_headers = {      
+  def self.request_headers
+    request_headers = {
       'Content-Type' => 'application/json',
       'Accept' => 'application/json',
       'User-Agent' => "Transifex-interface-ruby/#{Transifex::VERSION}"
-    }    
+    }
   end
 end
