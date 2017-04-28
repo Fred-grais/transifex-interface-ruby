@@ -50,4 +50,55 @@ module ContentHelper
       "tags" => ["tag1", "tag2"]
     }
   end
+
+  def basic_resource_info
+    {
+      "source_language_code" => "eo",
+      "name" => "JSON file example",
+      "i18n_type" => "KEYVALUEJSON",
+      "priority" => "0",
+      "slug" => "json",
+      "categories" => nil
+    }
+  end
+
+  def detailed_resource_info
+    {
+      "source_language_code" => "eo",
+      "name" => "JSON file example",
+      "created" => "2017-04-27T13:36:43.747",
+      "wordcount"=> 2,
+      "i18n_type" => "KEYVALUEJSON",
+      "project_slug" => "ruby-client",
+      "accept_translations" => true,
+      "last_update" => "2017-04-27T13:43:29.019",
+      "priority" => "0",
+      "available_languages" => [
+        {
+          "code_aliases" => " ",
+          "code" => "en",
+          "name" => "English"
+        },
+        {
+          "code_aliases" => " ",
+          "code" => "eo",
+          "name" => "Esperanto"
+        }
+      ],
+      "total_entities" => 1,
+      "slug" => "json",
+      "categories" => nil
+    }
+  end
+
+  def updated_resource_info
+    {
+      "source_language_code" => "eo",
+      "name" => "updated name",
+      "i18n_type" => "YML",
+      "priority" => "0",
+      "slug" => "test",
+      "categories" => ["test1", "test2"]
+    }
+  end
 end

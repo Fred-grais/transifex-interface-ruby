@@ -5,8 +5,8 @@ describe Transifex::Resources do
 
   describe "Instantiation" do
     it "should raise an error if the project_slug is not provided" do
-      expect{ Transifex::Resources.new() }.to raise_error(Transifex::MissingParametersError).
-        with_message("The following attributes are missing: project_slug")
+      expect { Transifex::Resources.new }.to raise_error(Transifex::MissingParametersError)
+        .with_message("The following attributes are missing: project_slug")
     end
   end
 
@@ -18,7 +18,7 @@ describe Transifex::Resources do
     end
 
     it "should raise an error if the project doesn't exist" do
-      non_existing_project = Transifex::Project.new("omg")
+      non_existing_project = Transifex::Project.new("not_existing_project")
 
       VCR.use_cassette "resources/non_existing_project" do
         expect { non_existing_project.resources.fetch }.to raise_error(Transifex::TransifexError)

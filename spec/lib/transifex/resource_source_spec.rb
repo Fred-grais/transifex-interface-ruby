@@ -25,8 +25,6 @@ describe Transifex::ResourceComponents::Source do
 
       VCR.use_cassette "resource/update_source_string_metadata" do
         expect(resource.source("content.update_string").update(params)).to eq "OK"
-      end
-      VCR.use_cassette "resource/fetch_updated_source_string_metadata" do
         expect(resource.source("content.update_string").fetch).to eq updated_resource_source_string_metadata
       end
     end

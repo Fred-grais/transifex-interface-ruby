@@ -2,10 +2,10 @@
 http_interactions:
 - request:
     method: put
-    uri: http://www.transifex.com/api/2/project/ruby-client/resource/json/source/e5152a2c9591f8ee13ba2c4e00655ae2
+    uri: http://www.transifex.com/api/2/project/ruby-client/resource/test
     body:
       encoding: UTF-8
-      string: '{"comment":"my comment","character_limit":140,"tags":["tag1","tag2"]}'
+      string: '{"name":"updated name","categories":["test1","test2"]}'
     headers:
       Content-Type:
       - application/json
@@ -27,10 +27,14 @@ http_interactions:
       Vary:
       - Accept-Encoding
       - Authorization, Host, Accept-Language, Cookie
+      Cache-Control:
+      - max-age=0
       Content-Type:
       - text/plain
       Date:
-      - Fri, 28 Apr 2017 10:07:01 GMT
+      - Fri, 28 Apr 2017 10:02:38 GMT
+      Expires:
+      - Fri, 28 Apr 2017 10:02:38 GMT
       Transfer-Encoding:
       - chunked
       Content-Language:
@@ -40,17 +44,19 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - X-Mapping-fjhppofk=2F71BA404CBE394603A72279804CAC7D; path=/
+      - X-Mapping-fjhppofk=100E7CB61F7D5C274279F09EADF920A3; path=/
+      Last-Modified:
+      - Fri, 28 Apr 2017 10:02:38 GMT
       X-Frame-Options:
       - SAMEORIGIN
     body:
       encoding: ASCII-8BIT
       string: OK
     http_version: 
-  recorded_at: Fri, 28 Apr 2017 10:07:01 GMT
+  recorded_at: Fri, 28 Apr 2017 10:02:38 GMT
 - request:
     method: get
-    uri: http://www.transifex.com/api/2/project/ruby-client/resource/json/source/e5152a2c9591f8ee13ba2c4e00655ae2
+    uri: http://www.transifex.com/api/2/project/ruby-client/resource/test
     body:
       encoding: UTF-8
       string: "{}"
@@ -75,10 +81,14 @@ http_interactions:
       Vary:
       - Accept-Encoding
       - Authorization, Host, Accept-Language, Cookie
+      Cache-Control:
+      - max-age=0
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Fri, 28 Apr 2017 10:07:02 GMT
+      - Fri, 28 Apr 2017 10:02:38 GMT
+      Expires:
+      - Fri, 28 Apr 2017 10:02:38 GMT
       Transfer-Encoding:
       - chunked
       Content-Language:
@@ -88,13 +98,17 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - X-Mapping-fjhppofk=100E7CB61F7D5C274279F09EADF920A3; path=/
+      - X-Mapping-fjhppofk=978A30C321AEE9D0F95E25198189AC99; path=/
+      Last-Modified:
+      - Fri, 28 Apr 2017 10:02:38 GMT
       X-Frame-Options:
       - SAMEORIGIN
     body:
       encoding: ASCII-8BIT
-      string: "{\n    \"comment\": \"my comment\", \n    \"character_limit\": 140,
-        \n    \"tags\": [\n        \"tag1\", \n        \"tag2\"\n    ]\n}"
+      string: "{\n    \"source_language_code\": \"eo\", \n    \"name\": \"updated
+        name\", \n    \"i18n_type\": \"YML\", \n    \"priority\": \"0\", \n    \"slug\":
+        \"test\", \n    \"categories\": [\n        \"test1\", \n        \"test2\"\n
+        \   ]\n}"
     http_version: 
-  recorded_at: Fri, 28 Apr 2017 10:07:02 GMT
+  recorded_at: Fri, 28 Apr 2017 10:02:38 GMT
 recorded_with: VCR 3.0.3
