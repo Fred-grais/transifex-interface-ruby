@@ -3,9 +3,11 @@ require "spec_helper"
 describe Transifex::Resources do
   let(:project) { Transifex::Project.new("ruby-client") }
 
-  it "should raise an error if instanciated without a project_slug" do
-    expect{ Transifex::Resources.new() }.to raise_error(Transifex::MissingParametersError).
-      with_message("The following attributes are missing: project_slug")
+  describe "Instantiation" do
+    it "should raise an error if the project_slug is not provided" do
+      expect{ Transifex::Resources.new() }.to raise_error(Transifex::MissingParametersError).
+        with_message("The following attributes are missing: project_slug")
+    end
   end
 
   describe "Fetch" do

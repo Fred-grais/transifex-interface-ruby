@@ -5,7 +5,7 @@ describe Transifex::ResourceComponents::Content do
   let(:resource) { project.resource("test") }
 
   describe "Instantiation" do
-    it "should raise an error when no parameters given" do
+    it "should raise an error when no parameters are given" do
       expect{ Transifex::ResourceComponents::Content.new }.to raise_error(ArgumentError)
     end
   end

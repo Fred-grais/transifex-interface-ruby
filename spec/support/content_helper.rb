@@ -34,4 +34,20 @@ module ContentHelper
   def successful_resource_creation
     [1, 0, 0]
   end
+
+  def resource_source_string_metadata
+    {
+      "comment" => "",
+      "character_limit" => nil,
+      "tags" => nil
+    }
+  end
+
+  def updated_resource_source_string_metadata
+    {
+      "comment" => "my comment",
+      "character_limit" => 140,
+      "tags" => ["tag1", "tag2"]
+    }
+  end
 end
