@@ -1,19 +1,18 @@
-require_relative '../../spec_helper'
+require "spec_helper"
 
 describe Transifex::Language do
-
-  describe "instanciation" do
+  describe "Instantiation" do
     it "should raise an error if a language code is not provided" do
       expect { Transifex::Language.new }.to raise_error(Transifex::MissingParametersError)
+        .with_message("The following attributes are missing: language_code")
     end
-  end 
+  end
 
   describe "Fetch" do
-    it "should fetch the selected language infos without raising an error" do
-      fetched_languages = nil
-      expect{ fetched_languages = Transifex::Languages.fetch('fr') }.to_not raise_error
-      expect(fetched_languages).to be_a_kind_of(Hash)
-      expect(fetched_languages.keys).to contain_exactly("rtl", "pluralequation", "code", "name", "nplurals")
+    it "should fetch the selected language info" do
+      VCR.use_cassette "language/fetch_language_info" do
+        expect(Transifex::Languages.fetch("fr")).to eq(language_info)
+      end
     end
   end
 end

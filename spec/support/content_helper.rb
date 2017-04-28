@@ -101,4 +101,14 @@ module ContentHelper
       "categories" => ["test1", "test2"]
     }
   end
+
+  def language_info
+    {
+      "rtl" => false,
+      "pluralequation" => "language.pluralequation",
+      "code" => "fr",
+      "name" => "French",
+      "nplurals" => 2
+    }
+  end
 end
