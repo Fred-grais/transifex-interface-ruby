@@ -6,7 +6,7 @@ describe Transifex::ResourceComponents::Source do
 
   describe "Instantiation" do
     it "should raise an error if the project_slug is not provided" do
-      expect{ Transifex::ResourceComponents::Source.new }.to raise_error(Transifex::MissingParametersError)
+      expect { Transifex::ResourceComponents::Source.new }.to raise_error(Transifex::MissingParametersError)
         .with_message("The following attributes are missing: project_slug")
     end
   end

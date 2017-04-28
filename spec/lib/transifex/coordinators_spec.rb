@@ -1,32 +1,38 @@
-require_relative '../../spec_helper'
+require "spec_helper"
 
 describe Transifex::ProjectComponents::LanguageComponents::Coordinators do
-  before(:all) do
-    @project = Transifex::Project.new("projet-de-test-1")
-  end
+  let(:project) { Transifex::Project.new("ruby-client") }
 
-  describe "Instanciation" do
-    it "should raise an error when no parameters given" do
-      expect{ Transifex::ProjectComponents::LanguageComponents::Coordinators.new }.to raise_error(Transifex::MissingParametersError)
+  describe "Instantiation" do
+    it "should raise an error if the project_slug is not provided" do
+      expect { Transifex::ProjectComponents::LanguageComponents::Coordinators.new }
+        .to raise_error(Transifex::MissingParametersError)
+        .with_message("The following attributes are missing: project_slug")
     end
   end
 
   describe "Fetch" do
-    it "should not raise an error and retrieve the language's informations" do
-      language_coordinators_infos = nil
-      expect{ language_coordinators_infos = @project.language('en').coordinators.fetch }.to_not raise_error
-      expect(language_coordinators_infos).to be_a_kind_of(Hash)
-      expect(language_coordinators_infos.keys).to contain_exactly("coordinators")
+    it "should retrieve the language coordinators" do
+      VCR.use_cassette "project/language/fetch_coordinators" do
+        expect(project.language("en").coordinators.fetch).to eq({"coordinators"=>["wirido"]})
+      end
     end
   end
 
   describe "Update" do
-    it "should not raise an error and update the coordinators list" do
-      expect{ @project.language('en').coordinators.update(['fredericgrais'])}.to_not raise_error
+    it "overwrites the coordinators list" do
+      VCR.use_cassette "project/language/update_coordinators" do
+        expect(project.language("en").coordinators.update(["nirnaeth"])).to eq "OK"
+        expect(project.language("en").coordinators.fetch).to eq({"coordinators"=>["nirnaeth"]})
+      end
     end
 
     it "should raise an error if the coordinator doesn't exist" do
-      expect{ @project.language('en').coordinators.update(['grgrgef'])}.to raise_error(Transifex::TransifexError)
+      VCR.use_cassette "project/language/update_non_existing_coordinator" do
+        expect { project.language("en").coordinators.update(['not_existing_coordinator']) }
+          .to raise_error(Transifex::TransifexError)
+          .with_message("Users not_existing_coordinator do not exist.")
+      end
     end
   end
 end
