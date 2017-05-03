@@ -143,4 +143,36 @@ module ContentHelper
       }
     ]
   end
+
+  def private_project_info
+    {
+      "description" => "Private Ruby Client",
+      "source_language_code" => "eo",
+      "slug" => "private-ruby-client",
+      "name" => "Private Ruby Client"
+    }
+  end
+
+  def detailed_private_project_info
+    {
+      "archived" => false,
+      "auto_join" => false,
+      "description" => "Private Ruby Client",
+      "fill_up_resources" => false,
+      "homepage" => "",
+      "last_updated" => nil,
+      "long_description" => "",
+      "maintainers" => [{"username" => "nirnaeth"}],
+      "name" => "Private Ruby Client",
+      "organization" => {"slug" => "freego"},
+      "private" => true,
+      "resources" => [],
+      "slug" => "private-ruby-client",
+      "source_language_code" => "eo",
+      "tags" => "",
+      "team" => {"id" => 74153, "name" => "Ruby Client team"},
+      "teams" => ["en", "de"],
+      "trans_instructions" => ""
+    }
+  end
 end

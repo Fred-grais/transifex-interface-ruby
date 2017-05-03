@@ -1,0 +1,120 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: http://www.transifex.com/api/2/project/private-ruby-client
+    body:
+      encoding: UTF-8
+      string: '{"description":"my new description"}'
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      User-Agent:
+      - Transifex-interface-ruby/0.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Authorization:
+      - Basic bS5naWFtYml0dG9AZnJlZWdvd2ViLml0Om1vbGxpXzAx
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Vary:
+      - Accept-Encoding
+      - Authorization, Host, Accept-Language, Cookie
+      Cache-Control:
+      - max-age=0
+      Content-Type:
+      - text/plain
+      Date:
+      - Wed, 03 May 2017 13:56:28 GMT
+      Expires:
+      - Wed, 03 May 2017 13:56:28 GMT
+      Transfer-Encoding:
+      - chunked
+      Content-Language:
+      - en
+      X-Content-Type-Options:
+      - nosniff
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - X-Mapping-fjhppofk=A44BEC4CD0B51682CDC2AA3E9CCFDDF4; path=/
+      Last-Modified:
+      - Wed, 03 May 2017 13:56:28 GMT
+      X-Frame-Options:
+      - SAMEORIGIN
+    body:
+      encoding: ASCII-8BIT
+      string: OK
+    http_version: 
+  recorded_at: Wed, 03 May 2017 13:56:28 GMT
+- request:
+    method: get
+    uri: http://www.transifex.com/api/2/project/private-ruby-client?details=true
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      User-Agent:
+      - Transifex-interface-ruby/0.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Authorization:
+      - Basic bS5naWFtYml0dG9AZnJlZWdvd2ViLml0Om1vbGxpXzAx
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Vary:
+      - Accept-Encoding
+      - Authorization, Host, Accept-Language, Cookie
+      Cache-Control:
+      - max-age=0
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Wed, 03 May 2017 13:56:28 GMT
+      Expires:
+      - Wed, 03 May 2017 13:56:28 GMT
+      Transfer-Encoding:
+      - chunked
+      Content-Language:
+      - en
+      X-Content-Type-Options:
+      - nosniff
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - X-Mapping-fjhppofk=A44BEC4CD0B51682CDC2AA3E9CCFDDF4; path=/
+      Last-Modified:
+      - Wed, 03 May 2017 13:56:28 GMT
+      X-Frame-Options:
+      - SAMEORIGIN
+    body:
+      encoding: ASCII-8BIT
+      string: "{\n    \"archived\": false, \n    \"last_updated\": null, \n    \"description\":
+        \"my new description\", \n    \"tags\": \"\", \n    \"trans_instructions\":
+        \"\", \n    \"private\": true, \n    \"slug\": \"private-ruby-client\", \n
+        \   \"source_language_code\": \"eo\", \n    \"auto_join\": false, \n    \"maintainers\":
+        [\n        {\n            \"username\": \"nirnaeth\"\n        }\n    ], \n
+        \   \"fill_up_resources\": false, \n    \"team\": {\n        \"id\": 74153,
+        \n        \"name\": \"Ruby Client team\"\n    }, \n    \"organization\": {\n
+        \       \"slug\": \"freego\"\n    }, \n    \"teams\": [\n        \"en\", \n
+        \       \"de\"\n    ], \n    \"homepage\": \"\", \n    \"long_description\":
+        \"\", \n    \"resources\": [], \n    \"name\": \"Private Ruby Client\"\n}"
+    http_version: 
+  recorded_at: Wed, 03 May 2017 13:56:28 GMT
+recorded_with: VCR 3.0.3

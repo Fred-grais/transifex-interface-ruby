@@ -1,91 +1,64 @@
-require_relative '../../spec_helper'
+require "spec_helper"
 
-describe Transifex::Project do 
-  
+describe Transifex::Project do
   describe "Manage a project" do
-    before(:all) do
-      @correct_params_private = {:slug => "projet_private", :name => "Projet de test Private", :description => "description", :source_language_code => "en", :private => true}
-      @correct_params_public = {:slug => "projet_public", :name => "Projet de test Public", :description => "description", :source_language_code => "en", :repository_url => "http://en.google.com"} 
-      @private_project = Transifex::Projects.create(@correct_params_private)
-      @public_project = Transifex::Projects.create(@correct_params_public)  
-    end    
+    let(:project) { Transifex::Project.new("private-ruby-client") }
 
-    describe "instanciation" do
+    describe "Instanciation" do
       it "should raise an error if a slug is not provided" do
         expect { Transifex::Project.new }.to raise_error(Transifex::MissingParametersError)
+          .with_message("The following attributes are missing: You must provide a slug for a project")
       end
-    end    
+    end
 
-    context "private project" do     
-      describe "fetch" do        
-        it "should retrieve informations about the project without details" do
-          fetched_project = @private_project.fetch
-          expect { fetched_project = @private_project.fetch }.to_not raise_error          
-          expect(fetched_project).to be_a_kind_of(Hash)
-          expect(fetched_project.keys).to contain_exactly("slug", "name", "description","source_language_code")
-        end
-        it "should retrieve informations about the project with details" do
-          fetched_project = nil
-          expect { fetched_project = @private_project.fetch_with_details }.to_not raise_error
-          expect(fetched_project).to be_a_kind_of(Hash)
-          expect(fetched_project.keys).to contain_exactly("archived", "auto_join", "fill_up_resources", "homepage", "last_updated", "long_description", "maintainers", "organization", "private", "resources", "tags", "team", "teams", "trans_instructions", "slug", "name", "description","source_language_code")
+    describe "Fetch" do
+      describe "#fetch" do
+        it "should retrieve the basic info about the project" do
+          VCR.use_cassette "project/fetch_private_project_info" do
+            expect(project.fetch).to eq(private_project_info)
+          end
         end
       end
-      describe "update" do
-        it "should not raise an error and update the project" do
-          updated_project = nil
-          expect { updated_project = @private_project.update({:description => "test"}) }.to_not raise_error
-          expect(updated_project).to eq("OK")
-          fetched_project = @private_project.fetch_with_details
-          expect(fetched_project['description']).to eq('test')
-        end
-        it "should raise an error if updated field is wrong" do
-          expect { @private_project.update({:buttchick => "lol"}) }.to raise_error(Transifex::TransifexError)
-        end
-        it "should raise an error if no paramaters to update are provided" do
-          expect { @private_project.update }.to raise_error(Transifex::Error)
-        end
-      end
-      describe "delete" do
-        it "should not raise an error" do
-          expect { @private_project.delete }.to_not raise_error
+
+      describe "#fetch_with_details" do
+        it "should retrieve the complete info about the project" do
+          VCR.use_cassette "project/fetch_with_details_private_project_info" do
+            expect(project.fetch_with_details).to eq(detailed_private_project_info)
+          end
         end
       end
     end
-    context "public project" do
-      describe "fetch" do
-        it "should retrieve informations about the project without details" do
-          fetched_project = nil
-          expect { fetched_project = @public_project.fetch }.to_not raise_error
-          expect(fetched_project).to be_a_kind_of(Hash)
-          expect(fetched_project.keys).to contain_exactly("slug", "name", "description","source_language_code")
-        end
-        it "should retrieve informations about the project with details" do
-          fetched_project = nil
-          expect { fetched_project = @public_project.fetch_with_details }.to_not raise_error
-          expect(fetched_project).to be_a_kind_of(Hash)
-          expect(fetched_project.keys).to contain_exactly("archived", "auto_join", "fill_up_resources", "homepage", "last_updated", "long_description", "maintainers", "organization", "private", "resources", "tags", "team", "teams", "trans_instructions", "slug", "name", "description","source_language_code")
+
+    describe "Update" do
+      it "updates the project info" do
+        VCR.use_cassette "project/update_private_project" do
+          expect(project.update(description: "my new description")).to eq("OK")
+          expect(project.fetch_with_details).to include({"description" => "my new description"})
         end
       end
-      describe "update" do
-        it "should not raise an error and update the project" do
-          updated_project = nil
-          expect { updated_project = @public_project.update({:description => "test"}) }.to_not raise_error
-          expect(updated_project).to eq("OK")
-        end
-        it "should raise an error if updated field is wrong" do
-          updated_project = nil
-          expect { updated_project = @public_project.update({:buttchick => "lol"}) }.to raise_error(Transifex::TransifexError)
-        end
-        it "should raise an error if no paramaters to update are provided" do
-          expect { @public_project.update }.to raise_error(Transifex::Error)
+
+      it "should raise an error if the field to be updated is not allowed" do
+        VCR.use_cassette "project/update_non_existing_attribute_private_project" do
+          expect(project.update({non_existing_attribute: "blah"})).to raise_error(Transifex::TransifexError)
+            .with_message("Field 'non_existing_attribute' is not allowed.")
         end
       end
-      describe "delete"  do
-        it "should not raise an error" do
-          expect { @public_project.delete }.to_not raise_error
-        end        
+
+      it "should raise an error if no paramaters to update are provided" do
+        VCR.use_cassette "project/update_with_missing_params_private_project" do
+          expect { project.update }.to raise_error(Transifex::Error)
+            .with_message("Empty request")
+        end
       end
-    end    
-  end  
+    end
+
+    describe "Delete" do
+      it "should delete the project" do
+        VCR.use_cassette "project/delete_project" do
+          expect(project.delete).to be nil
+          expect { project.fetch }.to raise_error(Transifex::TransifexError).with_message("Not Found")
+        end
+      end
+    end
+  end
 end
