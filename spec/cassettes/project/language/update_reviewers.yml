@@ -1,0 +1,157 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://www.transifex.com/api/2/project/ruby-client/language/en/coordinators
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      User-Agent:
+      - Transifex-interface-ruby/0.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Authorization:
+      - Basic bS5naWFtYml0dG9AZnJlZWdvd2ViLml0Om1vbGxpXzAx
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Vary:
+      - Accept-Encoding
+      - Authorization, Host, Accept-Language, Cookie
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Wed, 03 May 2017 16:47:51 GMT
+      Transfer-Encoding:
+      - chunked
+      Content-Language:
+      - en
+      X-Content-Type-Options:
+      - nosniff
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - X-Mapping-fjhppofk=300CA58EE011BC6BC0E393EE4F2B31F6; path=/
+      X-Frame-Options:
+      - SAMEORIGIN
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+            "coordinators": [
+                "nirnaeth"
+            ]
+        }
+    http_version: 
+  recorded_at: Wed, 03 May 2017 16:47:51 GMT
+- request:
+    method: put
+    uri: http://www.transifex.com/api/2/project/ruby-client/language/en/reviewers
+    body:
+      encoding: UTF-8
+      string: '{"coordinators":["nirnaeth"],"reviewers":["mupo"]}'
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      User-Agent:
+      - Transifex-interface-ruby/0.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Authorization:
+      - Basic bS5naWFtYml0dG9AZnJlZWdvd2ViLml0Om1vbGxpXzAx
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Vary:
+      - Accept-Encoding
+      - Authorization, Host, Accept-Language, Cookie
+      Content-Type:
+      - text/plain
+      Date:
+      - Wed, 03 May 2017 16:47:51 GMT
+      Transfer-Encoding:
+      - chunked
+      Content-Language:
+      - en
+      X-Content-Type-Options:
+      - nosniff
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - X-Mapping-fjhppofk=371E5B112B2394FA3017E8BE0809059C; path=/
+      X-Frame-Options:
+      - SAMEORIGIN
+    body:
+      encoding: ASCII-8BIT
+      string: OK
+    http_version: 
+  recorded_at: Wed, 03 May 2017 16:47:51 GMT
+- request:
+    method: get
+    uri: http://www.transifex.com/api/2/project/ruby-client/language/en/reviewers
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      User-Agent:
+      - Transifex-interface-ruby/0.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Authorization:
+      - Basic bS5naWFtYml0dG9AZnJlZWdvd2ViLml0Om1vbGxpXzAx
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Vary:
+      - Accept-Encoding
+      - Authorization, Host, Accept-Language, Cookie
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Wed, 03 May 2017 16:47:51 GMT
+      Transfer-Encoding:
+      - chunked
+      Content-Language:
+      - en
+      X-Content-Type-Options:
+      - nosniff
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - X-Mapping-fjhppofk=2F71BA404CBE394603A72279804CAC7D; path=/
+      X-Frame-Options:
+      - SAMEORIGIN
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+            "reviewers": [
+                "mupo"
+            ]
+        }
+    http_version: 
+  recorded_at: Wed, 03 May 2017 16:47:51 GMT
+recorded_with: VCR 3.0.3
