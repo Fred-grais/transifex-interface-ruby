@@ -1,0 +1,55 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://www.transifex.com/api/2/projects
+    body:
+      encoding: UTF-8
+      string: '{"slug":"private-ruby-client","name":"Private Ruby Client","description":"Private
+        Ruby Client","source_language_code":"eo","private":true}'
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      User-Agent:
+      - Transifex-interface-ruby/0.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Authorization:
+      - Basic bS5naWFtYml0dG9AZnJlZWdvd2ViLml0Om1vbGxpXzAx
+  response:
+    status:
+      code: 400
+      message: BAD REQUEST
+    headers:
+      Server:
+      - nginx
+      Vary:
+      - Authorization, Host, Accept-Language, Cookie
+      Cache-Control:
+      - max-age=0
+      Content-Type:
+      - text/plain
+      Date:
+      - Wed, 03 May 2017 15:05:38 GMT
+      Expires:
+      - Wed, 03 May 2017 15:05:38 GMT
+      Transfer-Encoding:
+      - chunked
+      Content-Language:
+      - en
+      Connection:
+      - close
+      Set-Cookie:
+      - X-Mapping-fjhppofk=100E7CB61F7D5C274279F09EADF920A3; path=/
+      Last-Modified:
+      - Wed, 03 May 2017 15:05:38 GMT
+      X-Frame-Options:
+      - SAMEORIGIN
+    body:
+      encoding: UTF-8
+      string: '[u"[(''slug'', [u''Project with this Slug already exists.''])]"]'
+    http_version: 
+  recorded_at: Wed, 03 May 2017 15:05:38 GMT
+recorded_with: VCR 3.0.3

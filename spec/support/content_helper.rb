@@ -175,4 +175,30 @@ module ContentHelper
       "trans_instructions" => ""
     }
   end
+
+  def public_project_info
+    {
+      "description" => "Public Ruby Client",
+      "source_language_code" => "it",
+      "slug" => "public-ruby-client",
+      "name" => "Public Ruby Client"
+    }
+  end
+
+  def all_projects_info
+    [
+      {
+        "description" => "Private Ruby Client",
+        "source_language_code" => "eo",
+        "slug" => "private-ruby-client",
+        "name" => "Private Ruby Client"
+      },
+      {
+        "description" => "Ruby Client",
+        "source_language_code" => "eo",
+        "slug" => "ruby-client",
+        "name" => "Ruby Client"
+      }
+    ]
+  end
 end
