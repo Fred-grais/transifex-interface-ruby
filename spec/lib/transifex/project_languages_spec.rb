@@ -1,35 +1,51 @@
-require_relative '../../spec_helper'
+require "spec_helper"
 
 describe Transifex::ProjectComponents::Languages do
-  before(:all) do
-    @project = Transifex::Project.new("projet-de-test-1")
-  end
+  let(:project) { Transifex::Project.new("ruby-client") }
 
-  describe "Instanciation" do
-    it "should raise an error when no parameters given" do
-      expect{ Transifex::ProjectComponents::Languages.new }.to raise_error(Transifex::MissingParametersError)
+  describe "Instantiation" do
+    it "should raise an error if the project_slug is not provided" do
+      expect { Transifex::ProjectComponents::Languages.new }
+        .to raise_error(Transifex::MissingParametersError)
+        .with_message("The following attributes are missing: project_slug")
     end
   end
 
   describe "Fetch" do
-    it "should not raise an error and retrieve the languages informations" do
-      project_languages = nil
-      expect{ project_languages = @project.languages.fetch }.to_not raise_error
-      expect(project_languages).to be_a_kind_of(Array)
-      expect(project_languages.first.keys).to contain_exactly("coordinators", "language_code", "translators", "reviewers")
+    it "should retrieve the information for all languages of the project" do
+      VCR.use_cassette "project/components/fetch_languages" do
+        expect(project.languages.fetch).to eq(project_languages_info)
+      end
     end
   end
 
   describe "Create" do
-    it "should not raise an error and create the new language for the project" do
-      expect{@project.languages.create({:language_code => "el", :coordinators => ['fredericgrais']}) }.to_not raise_error
-    end
-    it "should raise an error if the coordinator doesn't exist" do
-      expect{@project.languages.create({:language_code => "el", :coordinators => ['fredericgrais', 'loiloililoi']}) }.to raise_error(Transifex::TransifexError)
+    it "should create a new language for the project" do
+      params = {language_code: "fr", coordinators: ["wirido"]}
+
+      VCR.use_cassette "project/components/create_language" do
+        expect(project.languages.create(params)).to eq("Created")
+
+        project.language("fr").delete
+      end
     end
 
-    after(:all) do
-      @project.language('el').delete
+    it "should raise an error if the coordinator doesn't exist" do
+      params = {language_code: "fr", coordinators: ["non_existing"]}
+
+      VCR.use_cassette "project/components/create_language_non_existing_coordinator" do
+        expect { project.languages.create(params) }.to raise_error(Transifex::TransifexError)
+          .with_message("Users non_existing do not exist.")
+      end
+    end
+
+    it "should raise an error if no coordinator is provided" do
+      params = {language_code: "fr", coordinators: []}
+
+      VCR.use_cassette "project/components/create_language_without_coordinator" do
+        expect { project.languages.create(params) }.to raise_error(Transifex::TransifexError)
+          .with_message("There must be a coordinator set for a language.")
+      end
     end
   end
 end

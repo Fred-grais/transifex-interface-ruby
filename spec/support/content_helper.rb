@@ -132,4 +132,15 @@ module ContentHelper
       "translated_segments" => 0
     }
   end
+
+  def project_languages_info
+    [
+      {
+        "coordinators" => ["nirnaeth"],
+        "language_code" => "en",
+        "translators" => [],
+        "reviewers" => ["wirido"]
+      }
+    ]
+  end
 end
