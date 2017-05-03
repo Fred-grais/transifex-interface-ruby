@@ -28,7 +28,7 @@ describe Transifex::Resources do
   end
 
   describe "Create" do
-    it "should raise an error if required parameters are missing" do
+    it "should raise an error if the required parameters are missing" do
       expect { project.resources.create }.to raise_error(Transifex::MissingParametersError)
         .with_message("The following attributes are missing: slug, name, i18n_type, content")
     end

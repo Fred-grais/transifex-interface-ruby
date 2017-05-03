@@ -23,7 +23,7 @@ describe Transifex::Resource do
       end
     end
 
-    describe ".fetch" do
+    describe "#fetch" do
       it "should retrieve the basic info for the resource" do
         resource = project.resource("json")
 
@@ -33,7 +33,7 @@ describe Transifex::Resource do
       end
     end
 
-    describe ".fetch_with_details" do
+    describe "#fetch_with_details" do
       it "should retrieve the complete info for the resource" do
         resource = project.resource("json")
 

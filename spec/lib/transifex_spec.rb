@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe Transifex do
-  describe "#configure" do
+  describe ".configure" do
     it "sets the client configuration to access the project" do
       Transifex.configure do |c|
         c.client_login = "client_login"
