@@ -5,7 +5,7 @@ http_interactions:
     uri: http://www.transifex.com/api/2/project/ruby-client/language/en
     body:
       encoding: UTF-8
-      string: '{"coordinators":["wirido"],"translators":["wirido"],"reviewers":["wirido"]}'
+      string: '{"coordinators":["nirnaeth"],"translators":[],"reviewers":["wirido"]}'
     headers:
       Content-Type:
       - application/json
@@ -30,7 +30,7 @@ http_interactions:
       Content-Type:
       - text/plain
       Date:
-      - Fri, 28 Apr 2017 15:44:10 GMT
+      - Wed, 03 May 2017 11:02:37 GMT
       Transfer-Encoding:
       - chunked
       Content-Language:
@@ -47,7 +47,7 @@ http_interactions:
       encoding: ASCII-8BIT
       string: OK
     http_version: 
-  recorded_at: Fri, 28 Apr 2017 15:44:10 GMT
+  recorded_at: Wed, 03 May 2017 11:02:37 GMT
 - request:
     method: get
     uri: http://www.transifex.com/api/2/project/ruby-client/language/en
@@ -78,7 +78,7 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Fri, 28 Apr 2017 15:44:10 GMT
+      - Wed, 03 May 2017 11:02:37 GMT
       Transfer-Encoding:
       - chunked
       Content-Language:
@@ -88,13 +88,13 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - X-Mapping-fjhppofk=100E7CB61F7D5C274279F09EADF920A3; path=/
+      - X-Mapping-fjhppofk=A44BEC4CD0B51682CDC2AA3E9CCFDDF4; path=/
       X-Frame-Options:
       - SAMEORIGIN
     body:
       encoding: ASCII-8BIT
-      string: "{\n    \"coordinators\": [\n        \"wirido\"\n    ], \n    \"translators\":
-        [], \n    \"reviewers\": []\n}"
+      string: "{\n    \"coordinators\": [\n        \"nirnaeth\"\n    ], \n    \"translators\":
+        [], \n    \"reviewers\": [\n        \"wirido\"\n    ]\n}"
     http_version: 
-  recorded_at: Fri, 28 Apr 2017 15:44:10 GMT
+  recorded_at: Wed, 03 May 2017 11:02:37 GMT
 recorded_with: VCR 3.0.3

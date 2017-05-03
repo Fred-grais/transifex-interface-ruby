@@ -111,4 +111,25 @@ module ContentHelper
       "nplurals" => 2
     }
   end
+
+  def basic_language_info
+    {
+      "coordinators" => ["wirido"],
+      "translators" => [],
+      "reviewers" => []
+    }
+  end
+
+  def detailed_language_info
+    {
+      "coordinators" => ["wirido"],
+      "reviewers" => [],
+      "total_segments" => 4,
+      "untranslated_segments" => 4,
+      "translated_words" => 0,
+      "reviewed_segments" => 0,
+      "translators" => [],
+      "translated_segments" => 0
+    }
+  end
 end
