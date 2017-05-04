@@ -24,6 +24,7 @@ RSpec.configure do |config|
 
   config.after(:suite) do # or :each or :all
     File.delete("fetched.yml") if File.exists?("fetched.yml")
+    File.delete("translations.yml") if File.exists?("translations.yml")
   end
 
   config.include ContentHelper

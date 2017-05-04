@@ -1,53 +1,75 @@
-require_relative "../../spec_helper"
+require "spec_helper"
 
-describe Transifex::ResourceComponents::Translation do 
-  before(:all) do
-    @project = Transifex::Project.new("projet-de-test-1")
-    @resource = @project.resource("test")
-  end
+describe Transifex::ResourceComponents::Translation do
+  let(:project) { Transifex::Project.new("ruby-client") }
+  let(:resource) { project.resource("test") }
 
-  describe "Instanciation" do
-    it "should raise an error when no parameters given" do
-      expect{ Transifex::ResourceComponents::Translation.new }.to raise_error(Transifex::MissingParametersError)
+  describe "Instantiation" do
+    it "should raise an error if the project_slug is missing" do
+      expect { Transifex::ResourceComponents::Translation.new }.to raise_error(Transifex::MissingParametersError)
+        .with_message("The following attributes are missing: project_slug")
     end
   end
 
   describe "Fetch" do
-    it "should raise an error if no language code is provided" do
-      expect{ resource_stats = @resource.translation.fetch }.to raise_error(Transifex::MissingParametersError)
+    describe "#fetch" do
+      it "should raise an error if no language code is provided" do
+        VCR.use_cassette "resource/fetch_without_language_code_translations" do
+          expect { resource.translation.fetch }.to raise_error(Transifex::MissingParametersError)
+            .with_message("The following attributes are missing: translation_slug")
+        end
+      end
+
+      it "should retrieve a resource translation content as a hash" do
+        VCR.use_cassette "resource/fetch_translations" do
+          expect(resource.translation("en").fetch).to eq translation_content
+        end
+      end
     end
-    it "should retrieve the translation content as a hash" do
-      translation_content = nil
-      expect{ translation_content = @resource.translation('en').fetch }.to_not raise_error
-      expect(translation_content).to be_a_kind_of(Hash)
-      expect(translation_content.keys).to contain_exactly("content", "mimetype")
-    end
-    it "should retrieve the translation content as a file with default mode" do
-      translation_content = nil
-      path_to_file = File.dirname(__FILE__) + "/../yaml/resource_translation_default_content_test.yml"
-      options = {:path_to_file => path_to_file}
-      expect{ translation_content = @resource.translation('fr').fetch_with_file(options) }.to_not raise_error
-      file_exist = File.file?(path_to_file)
-      expect(file_exist).to eq(true)
-    end      
-    it "should retrieve the translation content as a file with a mode" do
-      translation_content = nil
-      path_to_file = File.dirname(__FILE__) + "/../yaml/resource_translation_reviewed_content_test.yml"
-      options = {:path_to_file => path_to_file, :mode => "reviewed"}      
-      expect{ translation_content = @resource.translation('en').fetch_with_file(options) }.to_not raise_error
-      file_exist = File.file?(path_to_file)
-      expect(file_exist).to eq(true)
+
+    describe "#fetch_with_file" do
+      it "should retrieve the translation content as a file with default mode" do
+        path_to_file = "translations.yml"
+        options = {path_to_file: path_to_file}
+
+        VCR.use_cassette "resource/fetch_with_file_translations" do
+          resource.translation("en").fetch_with_file(options)
+
+          expect(File.exist?(path_to_file)).to be true
+          expect(File.read(path_to_file)).to eq file_translation_content
+        end
+      end
+
+      it "should retrieve the translation content as a file with a specific mode" do
+        path_to_file = "translations.yml"
+        options = {path_to_file: path_to_file, mode: "translator"}
+
+        VCR.use_cassette "resource/fetch_with_file_and_mode_translations" do
+          resource.translation("en").fetch_with_file(options)
+
+          expect(File.exist?(path_to_file)).to be true
+          expect(File.read(path_to_file)).to eq file_translation_content_with_mode
+        end
+      end
     end
   end
 
   describe "Update" do
     it "sould raise an error if try to update source language" do
-      options = {:i18n_type => "YAML", :content => get_yaml_source_trad_file_path('en')}
-      expect{ translation_content = @resource.translation('en').update(options) }.to raise_error(Transifex::TransifexError)
+      options = {i18n_type: "YAML", content: get_yaml_source_trad_file_path("eo")}
+
+      VCR.use_cassette "resource/update_source_language" do
+        expect { resource.translation("eo").update(options) }.to raise_error(Transifex::TransifexError)
+          .with_message("Cannot update the source language")
+      end
     end
-    it "should not raise an error and update the resource translation" do
-      options = {:i18n_type => "YAML", :content => get_yaml_source_trad_file_path('fr')}
-      expect{ @resource.translation('fr').update(options) }.to_not raise_error
+
+    it "should update the resource translation" do
+      options = {i18n_type: "YAML", content: get_yaml_source_trad_file_path("en")}
+
+      VCR.use_cassette "resource/update_translation_for_language" do
+        expect(resource.translation("en").update(options)).to eq updated_translations
+      end
     end
   end
 end

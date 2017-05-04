@@ -228,4 +228,28 @@ module ContentHelper
       }
     }
   end
+
+  def translation_content
+    {
+      "content" => "en: {}\n",
+      "mimetype" => "text/plain"
+    }
+  end
+
+  def file_translation_content
+    "---\nen: {}\n"
+  end
+
+  def file_translation_content_with_mode
+    "---\nen:\n  test_string: ''\n"
+  end
+
+  def updated_translations
+    {
+      "strings_added" => 0,
+      "strings_updated" => 0,
+      "strings_delete" => 0,
+      "redirect" => "/freego/ruby-client/test/"
+    }
+  end
 end
