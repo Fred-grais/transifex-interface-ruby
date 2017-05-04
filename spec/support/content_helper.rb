@@ -201,4 +201,31 @@ module ContentHelper
       }
     ]
   end
+
+  def all_languages_stats
+    {
+      "eo" => {
+        "reviewed_percentage" => "0%",
+        "completed" => "100%",
+        "untranslated_words" => 0,
+        "last_commiter" => "nirnaeth",
+        "reviewed" => 0,
+        "translated_entities" => 1,
+        "translated_words" => 2,
+        "last_update" => "2017-04-27 14:08:57",
+        "untranslated_entities" => 0
+      },
+      "en" => {
+        "reviewed_percentage" => "0%",
+        "completed" => "0%",
+        "untranslated_words" => 2,
+        "last_commiter" => "nirnaeth",
+        "reviewed" => 0,
+        "translated_entities" => 0,
+        "translated_words" => 0,
+        "last_update" => "2017-04-27 14:08:57",
+        "untranslated_entities" => 1
+      }
+    }
+  end
 end
