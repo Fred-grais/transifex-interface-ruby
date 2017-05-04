@@ -54,7 +54,7 @@ describe Transifex::ProjectComponents::Language do
         project.languages.create(language_code: "it", coordinators: ["wirido"])
 
         expect(project.language("it").delete).to be nil
-        expect(project.language("it").fetch).to raise_error(Transifex::TransifexError)
+        expect { project.language("it").fetch }.to raise_error(Transifex::TransifexError)
           .with_message("Forbidden")
       end
     end

@@ -29,7 +29,7 @@ describe Transifex::ProjectComponents::LanguageComponents::Coordinators do
 
     it "should raise an error if the coordinator doesn't exist" do
       VCR.use_cassette "project/language/update_non_existing_coordinator" do
-        expect { project.language("en").coordinators.update(['not_existing_coordinator']) }
+        expect { project.language("en").coordinators.update(["not_existing_coordinator"]) }
           .to raise_error(Transifex::TransifexError)
           .with_message("Users not_existing_coordinator do not exist.")
       end

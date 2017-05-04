@@ -39,7 +39,7 @@ describe Transifex::Project do
 
       it "should raise an error if the field to be updated is not allowed" do
         VCR.use_cassette "project/update_non_existing_attribute_private_project" do
-          expect(project.update({non_existing_attribute: "blah"})).to raise_error(Transifex::TransifexError)
+          expect { project.update({non_existing_attribute: "blah"}) }.to raise_error(Transifex::TransifexError)
             .with_message("Field 'non_existing_attribute' is not allowed.")
         end
       end

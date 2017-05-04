@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://www.transifex.com/api/2/project/not_existing_project/resources
+    uri: http://www.transifex.com/api/2/project/ruby-client/language/en/translators
     body:
       encoding: UTF-8
       string: "{}"
@@ -19,37 +19,36 @@ http_interactions:
       - Basic bS5naWFtYml0dG9AZnJlZWdvd2ViLml0Om1vbGxpXzAx
   response:
     status:
-      code: 404
-      message: NOT FOUND
+      code: 200
+      message: OK
     headers:
       Server:
       - nginx
       Vary:
       - Accept-Encoding
       - Authorization, Host, Accept-Language, Cookie
-      Cache-Control:
-      - max-age=0
       Content-Type:
-      - text/plain
+      - application/json; charset=utf-8
       Date:
-      - Thu, 04 May 2017 15:42:47 GMT
-      Expires:
-      - Thu, 04 May 2017 15:42:47 GMT
+      - Thu, 04 May 2017 15:16:26 GMT
       Transfer-Encoding:
       - chunked
       Content-Language:
       - en
+      X-Content-Type-Options:
+      - nosniff
       Connection:
       - keep-alive
       Set-Cookie:
-      - X-Mapping-fjhppofk=978A30C321AEE9D0F95E25198189AC99; path=/
-      Last-Modified:
-      - Thu, 04 May 2017 15:42:47 GMT
+      - X-Mapping-fjhppofk=300CA58EE011BC6BC0E393EE4F2B31F6; path=/
       X-Frame-Options:
       - SAMEORIGIN
     body:
       encoding: ASCII-8BIT
-      string: Not Found
+      string: |-
+        {
+            "translators": []
+        }
     http_version: 
-  recorded_at: Thu, 04 May 2017 15:42:47 GMT
+  recorded_at: Thu, 04 May 2017 15:16:26 GMT
 recorded_with: VCR 3.0.3
