@@ -252,4 +252,21 @@ module ContentHelper
       "redirect" => "/freego/ruby-client/test/"
     }
   end
+
+  def string_details
+    {
+      "comment" => "",
+      "context" => "",
+      "tags" => nil,
+      "character_limit" => nil,
+      "reviewed" => false,
+      "user" => "",
+      "key" => "test_string",
+      "source_string" => "test string",
+      "translation" => "",
+      "last_update" => "",
+      "pluralized" => false,
+      "occurrences" => nil
+    }
+  end
 end
