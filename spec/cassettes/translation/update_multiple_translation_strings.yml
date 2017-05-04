@@ -1,0 +1,107 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: http://www.transifex.com/api/2/project/ruby-client/resource/test/translation/en/strings
+    body:
+      encoding: UTF-8
+      string: '[{"key":"test_string","translation":"multiple translations","source_entity_hash":"1dc9aad7928cb3cb1b400d17d39a8523"},{"key":"yet_another_string","translation":"yet
+        another translation","source_entity_hash":"ffd76c87a3ca586ffaa5fbbbafe4a8b6"}]'
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      User-Agent:
+      - Transifex-interface-ruby/0.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Authorization:
+      - Basic bS5naWFtYml0dG9AZnJlZWdvd2ViLml0Om1vbGxpXzAx
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Vary:
+      - Accept-Encoding
+      - Authorization, Host, Accept-Language, Cookie
+      Content-Type:
+      - text/plain
+      Date:
+      - Thu, 04 May 2017 14:20:55 GMT
+      Transfer-Encoding:
+      - chunked
+      Content-Language:
+      - en
+      X-Content-Type-Options:
+      - nosniff
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - X-Mapping-fjhppofk=300CA58EE011BC6BC0E393EE4F2B31F6; path=/
+      X-Frame-Options:
+      - SAMEORIGIN
+    body:
+      encoding: ASCII-8BIT
+      string: OK
+    http_version: 
+  recorded_at: Thu, 04 May 2017 14:20:55 GMT
+- request:
+    method: get
+    uri: http://www.transifex.com/api/2/project/ruby-client/resource/test/translation/en/strings
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      User-Agent:
+      - Transifex-interface-ruby/0.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Authorization:
+      - Basic bS5naWFtYml0dG9AZnJlZWdvd2ViLml0Om1vbGxpXzAx
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Vary:
+      - Accept-Encoding
+      - Authorization, Host, Accept-Language, Cookie
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Thu, 04 May 2017 14:20:56 GMT
+      Transfer-Encoding:
+      - chunked
+      Content-Language:
+      - en
+      X-Content-Type-Options:
+      - nosniff
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - X-Mapping-fjhppofk=300CA58EE011BC6BC0E393EE4F2B31F6; path=/
+      X-Frame-Options:
+      - SAMEORIGIN
+    body:
+      encoding: ASCII-8BIT
+      string: "[\n    {\n        \"comment\": \"\", \n        \"context\": \"\", \n
+        \       \"key\": \"yet_another_string\", \n        \"reviewed\": false, \n
+        \       \"pluralized\": false, \n        \"source_string\": \"yet another
+        string\", \n        \"translation\": \"yet another translation\"\n    }, \n
+        \   {\n        \"comment\": \"\", \n        \"context\": \"\", \n        \"key\":
+        \"test_string\", \n        \"reviewed\": false, \n        \"pluralized\":
+        false, \n        \"source_string\": \"test string\", \n        \"translation\":
+        \"multiple translations\"\n    }\n]"
+    http_version: 
+  recorded_at: Thu, 04 May 2017 14:20:56 GMT
+recorded_with: VCR 3.0.3

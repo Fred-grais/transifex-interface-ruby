@@ -269,4 +269,60 @@ module ContentHelper
       "occurrences" => nil
     }
   end
+
+  def language_strings
+    [
+      {
+        "comment" => "",
+        "context" => "",
+        "key" => "test_string",
+        "reviewed" => true,
+        "pluralized" => false,
+        "source_string" => "test string",
+        "translation" => "translated test string"
+      }
+    ]
+  end
+
+  def language_strings_with_details
+    [
+      {
+        "comment" => "",
+        "context" => "",
+        "tags" => nil,
+        "character_limit" => nil,
+        "reviewed" => true,
+        "user" => "nirnaeth",
+        "key" => "test_string",
+        "source_string" => "test string",
+        "translation" => "translated test string",
+        "last_update" => "2017-05-04T12:22:46.171",
+        "pluralized" => false,
+        "occurrences" => nil
+      }
+    ]
+  end
+
+  def multiple_language_strings
+    [
+      {
+        "comment" => "",
+        "context" => "",
+        "key" => "yet_another_string",
+        "reviewed" => false,
+        "pluralized" => false,
+        "source_string" => "yet another string",
+        "translation" => "yet another translation"
+      },
+      {
+        "comment" => "",
+        "context" => "",
+        "key" => "test_string",
+        "reviewed" => false,
+        "pluralized" => false,
+        "source_string" => "test string",
+        "translation" => "multiple translations"
+      }
+    ]
+  end
 end
