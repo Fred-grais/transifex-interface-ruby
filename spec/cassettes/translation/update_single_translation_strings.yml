@@ -1,0 +1,104 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: http://www.transifex.com/api/2/project/ruby-client/resource/test/translation/en/strings
+    body:
+      encoding: UTF-8
+      string: '[{"key":"test_string","translation":"updated translation","source_entity_hash":"1dc9aad7928cb3cb1b400d17d39a8523"}]'
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      User-Agent:
+      - Transifex-interface-ruby/0.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Authorization:
+      - Basic bS5naWFtYml0dG9AZnJlZWdvd2ViLml0Om1vbGxpXzAx
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Vary:
+      - Accept-Encoding
+      - Authorization, Host, Accept-Language, Cookie
+      Content-Type:
+      - text/plain
+      Date:
+      - Thu, 04 May 2017 13:55:33 GMT
+      Transfer-Encoding:
+      - chunked
+      Content-Language:
+      - en
+      X-Content-Type-Options:
+      - nosniff
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - X-Mapping-fjhppofk=A44BEC4CD0B51682CDC2AA3E9CCFDDF4; path=/
+      X-Frame-Options:
+      - SAMEORIGIN
+    body:
+      encoding: ASCII-8BIT
+      string: OK
+    http_version: 
+  recorded_at: Thu, 04 May 2017 13:55:34 GMT
+- request:
+    method: get
+    uri: http://www.transifex.com/api/2/project/ruby-client/resource/test/translation/en/string/1dc9aad7928cb3cb1b400d17d39a8523
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      User-Agent:
+      - Transifex-interface-ruby/0.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Authorization:
+      - Basic bS5naWFtYml0dG9AZnJlZWdvd2ViLml0Om1vbGxpXzAx
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Vary:
+      - Accept-Encoding
+      - Authorization, Host, Accept-Language, Cookie
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Thu, 04 May 2017 13:55:34 GMT
+      Transfer-Encoding:
+      - chunked
+      Content-Language:
+      - en
+      X-Content-Type-Options:
+      - nosniff
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - X-Mapping-fjhppofk=100E7CB61F7D5C274279F09EADF920A3; path=/
+      X-Frame-Options:
+      - SAMEORIGIN
+    body:
+      encoding: ASCII-8BIT
+      string: "{\n    \"comment\": \"\", \n    \"context\": \"\", \n    \"tags\":
+        null, \n    \"character_limit\": null, \n    \"reviewed\": false, \n    \"user\":
+        \"nirnaeth\", \n    \"key\": \"test_string\", \n    \"source_string\": \"test
+        string\", \n    \"translation\": \"updated translation\", \n    \"last_update\":
+        \"2017-05-04T13:52:15.278\", \n    \"pluralized\": false, \n    \"occurrences\":
+        null\n}"
+    http_version: 
+  recorded_at: Thu, 04 May 2017 13:55:34 GMT
+recorded_with: VCR 3.0.3

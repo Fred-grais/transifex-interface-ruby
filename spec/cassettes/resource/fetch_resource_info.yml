@@ -1,0 +1,59 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://www.transifex.com/api/2/project/ruby-client/resource/json
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      User-Agent:
+      - Transifex-interface-ruby/0.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Authorization:
+      - Basic bS5naWFtYml0dG9AZnJlZWdvd2ViLml0Om1vbGxpXzAx
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Vary:
+      - Accept-Encoding
+      - Authorization, Host, Accept-Language, Cookie
+      Cache-Control:
+      - max-age=0
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Fri, 28 Apr 2017 09:20:30 GMT
+      Expires:
+      - Fri, 28 Apr 2017 09:20:30 GMT
+      Transfer-Encoding:
+      - chunked
+      Content-Language:
+      - en
+      X-Content-Type-Options:
+      - nosniff
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - X-Mapping-fjhppofk=A44BEC4CD0B51682CDC2AA3E9CCFDDF4; path=/
+      Last-Modified:
+      - Fri, 28 Apr 2017 09:20:30 GMT
+      X-Frame-Options:
+      - SAMEORIGIN
+    body:
+      encoding: ASCII-8BIT
+      string: "{\n    \"source_language_code\": \"eo\", \n    \"name\": \"JSON file
+        example\", \n    \"i18n_type\": \"KEYVALUEJSON\", \n    \"priority\": \"0\",
+        \n    \"slug\": \"json\", \n    \"categories\": null\n}"
+    http_version: 
+  recorded_at: Fri, 28 Apr 2017 09:20:30 GMT
+recorded_with: VCR 3.0.3

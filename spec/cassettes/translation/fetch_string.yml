@@ -1,0 +1,55 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://www.transifex.com/api/2/project/ruby-client/resource/test/translation/en/string/1dc9aad7928cb3cb1b400d17d39a8523
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      User-Agent:
+      - Transifex-interface-ruby/0.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Authorization:
+      - Basic bS5naWFtYml0dG9AZnJlZWdvd2ViLml0Om1vbGxpXzAx
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Vary:
+      - Accept-Encoding
+      - Authorization, Host, Accept-Language, Cookie
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Thu, 04 May 2017 12:21:02 GMT
+      Transfer-Encoding:
+      - chunked
+      Content-Language:
+      - en
+      X-Content-Type-Options:
+      - nosniff
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - X-Mapping-fjhppofk=2F71BA404CBE394603A72279804CAC7D; path=/
+      X-Frame-Options:
+      - SAMEORIGIN
+    body:
+      encoding: ASCII-8BIT
+      string: "{\n    \"comment\": \"\", \n    \"context\": \"\", \n    \"tags\":
+        null, \n    \"character_limit\": null, \n    \"reviewed\": false, \n    \"user\":
+        \"\", \n    \"key\": \"test_string\", \n    \"source_string\": \"test string\",
+        \n    \"translation\": \"\", \n    \"last_update\": \"\", \n    \"pluralized\":
+        false, \n    \"occurrences\": null\n}"
+    http_version: 
+  recorded_at: Thu, 04 May 2017 12:21:02 GMT
+recorded_with: VCR 3.0.3

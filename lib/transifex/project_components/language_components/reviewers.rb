@@ -18,14 +18,11 @@ module Transifex
           [:project, :language]
         end
 
-        def update(reviewers_list = {}, options = {})
+        def update(reviewers = [], options = {})
           # Transifex needs coordinators list to be passed also when updating reviewers list. Strange
           # Fetch the current coordinators list and add it to the params as a workaround.
-          fetched_language_infos = Transifex::Project.new(@project_slug).language(@language_slug).fetch
-          params = {}
-          params[:coordinators] = fetched_language_infos["coordinators"]          
-          params[:reviewers] = reviewers_list
-          super(params, options)
+          coordinators = Transifex::Project.new(@project_slug).language(@language_slug).coordinators.fetch
+          super(coordinators.merge({"reviewers" => reviewers}), options)
         end
       end
     end

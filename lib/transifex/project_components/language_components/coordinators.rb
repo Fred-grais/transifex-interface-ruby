@@ -18,10 +18,8 @@ module Transifex
           [:project, :language]
         end
 
-        def update(coordinators_list = {}, options = {})
-          params = {}
-          params[:coordinators] = coordinators_list
-          super(params, options)
+        def update(coordinators = [], options = {})
+          super({"coordinators" => coordinators}, options)
         end
       end
     end

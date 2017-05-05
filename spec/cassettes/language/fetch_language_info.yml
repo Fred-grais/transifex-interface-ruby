@@ -1,0 +1,58 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://www.transifex.com/api/2/language/fr
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      User-Agent:
+      - Transifex-interface-ruby/0.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Authorization:
+      - Basic bS5naWFtYml0dG9AZnJlZWdvd2ViLml0Om1vbGxpXzAx
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Vary:
+      - Accept-Encoding
+      - Authorization, Host, Accept-Language, Cookie
+      Cache-Control:
+      - max-age=3600
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Fri, 28 Apr 2017 14:59:03 GMT
+      Expires:
+      - Fri, 28 Apr 2017 15:59:03 GMT
+      Transfer-Encoding:
+      - chunked
+      Content-Language:
+      - en
+      X-Content-Type-Options:
+      - nosniff
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - X-Mapping-fjhppofk=978A30C321AEE9D0F95E25198189AC99; path=/
+      Last-Modified:
+      - Fri, 28 Apr 2017 14:59:03 GMT
+      X-Frame-Options:
+      - SAMEORIGIN
+    body:
+      encoding: ASCII-8BIT
+      string: "{\n    \"rtl\": false, \n    \"pluralequation\": \"language.pluralequation\",
+        \n    \"code\": \"fr\", \n    \"name\": \"French\", \n    \"nplurals\": 2\n}"
+    http_version: 
+  recorded_at: Fri, 28 Apr 2017 14:59:03 GMT
+recorded_with: VCR 3.0.3

@@ -64,21 +64,27 @@ module Transifex
       module InstanceMethods
         def update(params = {}, options = {})      
           if params.is_a?(Hash) && params[:i18n_type] && params[:i18n_type] != "TXT"
-            if params[:i18n_type] == "YML"
+            case params[:i18n_type]
+            when "YML"
               params[:content] = YAML::load_file(params[:content]).to_yaml
+            when "KEYVALUEJSON"
+              params[:content] = params[:content].to_json
             else
               file = File.open(params[:content], "rb")
               params[:content] = file.read
               file.close
             end
+
             # Deal with accents
-            params[:content] = params[:content].force_encoding('UTF-8')
-          end              
+            params[:content] = params[:content].force_encoding("UTF-8")
+          end
+
           url = CrudRequests.generate_url(self)
+
           Transifex.query_api(:put, url, params)
         end
-      end    
-       
+      end
+
       def self.included(receiver)
         receiver.send(:include, InstanceMethods)                 
       end
