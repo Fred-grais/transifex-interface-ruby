@@ -1,62 +1,8 @@
 ---
 http_interactions:
 - request:
-    method: put
-    uri: http://www.transifex.com/api/2/project/ruby-client/resource/test
-    body:
-      encoding: UTF-8
-      string: '{"name":"updated name","categories":["test1","test2"]}'
-    headers:
-      Content-Type:
-      - application/json
-      Accept:
-      - application/json
-      User-Agent:
-      - Transifex-interface-ruby/0.0.1
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Authorization:
-      - Basic bS5naWFtYml0dG9AZnJlZWdvd2ViLml0Om1vbGxpXzAx
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Server:
-      - nginx
-      Vary:
-      - Accept-Encoding
-      - Authorization, Host, Accept-Language, Cookie
-      Cache-Control:
-      - max-age=0
-      Content-Type:
-      - text/plain
-      Date:
-      - Fri, 05 May 2017 08:16:44 GMT
-      Expires:
-      - Fri, 05 May 2017 08:16:44 GMT
-      Transfer-Encoding:
-      - chunked
-      Content-Language:
-      - en
-      X-Content-Type-Options:
-      - nosniff
-      Connection:
-      - keep-alive
-      Set-Cookie:
-      - X-Mapping-fjhppofk=371E5B112B2394FA3017E8BE0809059C; path=/
-      Last-Modified:
-      - Fri, 05 May 2017 08:16:44 GMT
-      X-Frame-Options:
-      - SAMEORIGIN
-    body:
-      encoding: ASCII-8BIT
-      string: OK
-    http_version: 
-  recorded_at: Fri, 05 May 2017 08:16:44 GMT
-- request:
     method: get
-    uri: http://www.transifex.com/api/2/project/ruby-client/resource/test
+    uri: http://www.transifex.com/api/2/project/ruby-client/resource/json
     body:
       encoding: UTF-8
       string: "{}"
@@ -86,9 +32,9 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Fri, 05 May 2017 08:16:44 GMT
+      - Fri, 05 May 2017 08:11:20 GMT
       Expires:
-      - Fri, 05 May 2017 08:16:44 GMT
+      - Fri, 05 May 2017 08:11:20 GMT
       Transfer-Encoding:
       - chunked
       Content-Language:
@@ -98,17 +44,72 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - X-Mapping-fjhppofk=300CA58EE011BC6BC0E393EE4F2B31F6; path=/
+      - X-Mapping-fjhppofk=A44BEC4CD0B51682CDC2AA3E9CCFDDF4; path=/
       Last-Modified:
-      - Fri, 05 May 2017 08:16:44 GMT
+      - Fri, 05 May 2017 08:11:20 GMT
       X-Frame-Options:
       - SAMEORIGIN
     body:
       encoding: ASCII-8BIT
-      string: "{\n    \"source_language_code\": \"eo\", \n    \"name\": \"updated
-        name\", \n    \"i18n_type\": \"YML\", \n    \"priority\": \"0\", \n    \"slug\":
-        \"test\", \n    \"categories\": [\n        \"test1\", \n        \"test2\"\n
-        \   ]\n}"
-    http_version: 
-  recorded_at: Fri, 05 May 2017 08:16:44 GMT
+      string: "{\n    \"source_language_code\": \"eo\", \n    \"name\": \"JSON file
+        example\", \n    \"i18n_type\": \"KEYVALUEJSON\", \n    \"priority\": \"0\",
+        \n    \"slug\": \"json\", \n    \"categories\": null\n}"
+    http_version:
+  recorded_at: Fri, 05 May 2017 08:11:20 GMT
+- request:
+    method: put
+    uri: http://www.transifex.com/api/2/project/ruby-client/resource/json/content
+    body:
+      encoding: UTF-8
+      string: '{"i18n_type":"KEYVALUEJSON","content":"{\"test_string\":\"test string
+        as json\"}"}'
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      User-Agent:
+      - Transifex-interface-ruby/0.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Authorization:
+      - Basic bS5naWFtYml0dG9AZnJlZWdvd2ViLml0Om1vbGxpXzAx
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Vary:
+      - Accept-Encoding
+      - Authorization, Host, Accept-Language, Cookie
+      Cache-Control:
+      - max-age=0
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Fri, 05 May 2017 08:11:22 GMT
+      Expires:
+      - Fri, 05 May 2017 08:11:22 GMT
+      Transfer-Encoding:
+      - chunked
+      Content-Language:
+      - en
+      X-Content-Type-Options:
+      - nosniff
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - X-Mapping-fjhppofk=A44BEC4CD0B51682CDC2AA3E9CCFDDF4; path=/
+      Last-Modified:
+      - Fri, 05 May 2017 08:11:22 GMT
+      X-Frame-Options:
+      - SAMEORIGIN
+    body:
+      encoding: ASCII-8BIT
+      string: "{\n    \"strings_added\": 0, \n    \"strings_updated\": 1, \n    \"strings_delete\":
+        0, \n    \"redirect\": \"/ruby-client/json/\"\n}"
+    http_version:
+  recorded_at: Fri, 05 May 2017 08:11:22 GMT
 recorded_with: VCR 3.0.3

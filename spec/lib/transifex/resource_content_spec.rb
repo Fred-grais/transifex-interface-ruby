@@ -27,9 +27,20 @@ describe Transifex::ResourceComponents::Content do
   end
 
   describe "Update" do
-    it "should update a resource using a file" do
+    it "updates a resource using a file" do
       VCR.use_cassette "resource/update_content_yml" do
-        expect { resource.content.update(i18n_type: "YAML", content: get_yaml_source_trad_file_path('eo')) }.to_not raise_error
+        expect(resource.content.update(i18n_type: "YAML", content: get_yaml_source_trad_file_path("eo")))
+          .to eq updated_resource_with_file
+      end
+    end
+
+    it "updates a resource using json" do
+      json_resource = project.resource("json")
+      content = {test_string: 'test string as json'}
+
+      VCR.use_cassette "resource/update_content_json" do
+        expect(json_resource.content.update(i18n_type: "KEYVALUEJSON", content: content))
+          .to eq updated_resource_with_json
       end
     end
 

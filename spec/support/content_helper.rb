@@ -325,4 +325,22 @@ module ContentHelper
       }
     ]
   end
+
+  def updated_resource_with_file
+    {
+      "strings_added" => 1,
+      "strings_updated" => 0,
+      "strings_delete" => 1,
+      "redirect" => "/ruby-client/test/"
+    }
+  end
+
+  def updated_resource_with_json
+    {
+      "strings_added" => 0,
+      "strings_updated" => 1,
+      "strings_delete" => 0,
+      "redirect" => "/ruby-client/json/"
+    }
+  end
 end
