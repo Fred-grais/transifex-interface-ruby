@@ -1,0 +1,54 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: http://www.transifex.com/api/2/project/private-ruby-client
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      User-Agent:
+      - Transifex-interface-ruby/0.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Authorization:
+      - Basic bS5naWFtYml0dG9AZnJlZWdvd2ViLml0Om1vbGxpXzAx
+  response:
+    status:
+      code: 400
+      message: BAD REQUEST
+    headers:
+      Server:
+      - nginx
+      Vary:
+      - Authorization, Host, Accept-Language, Cookie
+      Cache-Control:
+      - max-age=0
+      Content-Type:
+      - text/plain
+      Date:
+      - Wed, 03 May 2017 14:01:23 GMT
+      Expires:
+      - Wed, 03 May 2017 14:01:23 GMT
+      Transfer-Encoding:
+      - chunked
+      Content-Language:
+      - en
+      Connection:
+      - close
+      Set-Cookie:
+      - X-Mapping-fjhppofk=978A30C321AEE9D0F95E25198189AC99; path=/
+      Last-Modified:
+      - Wed, 03 May 2017 14:01:23 GMT
+      X-Frame-Options:
+      - SAMEORIGIN
+    body:
+      encoding: UTF-8
+      string: Empty request
+    http_version: 
+  recorded_at: Wed, 03 May 2017 14:01:23 GMT
+recorded_with: VCR 3.0.3

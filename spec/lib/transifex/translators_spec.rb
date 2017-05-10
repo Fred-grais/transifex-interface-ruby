@@ -1,32 +1,38 @@
-require_relative '../../spec_helper'
+require "spec_helper"
 
 describe Transifex::ProjectComponents::LanguageComponents::Translators do
-  before(:all) do
-    @project = Transifex::Project.new("projet-de-test-1")
-  end
+  let(:project) { Transifex::Project.new("ruby-client") }
 
-  describe "Instanciation" do
-    it "should raise an error when no parameters given" do
-      expect{ Transifex::ProjectComponents::LanguageComponents::Translators.new }.to raise_error(Transifex::MissingParametersError)
+  describe "Instantiation" do
+    it "raises an error when the project_slug is not provided" do
+      expect { Transifex::ProjectComponents::LanguageComponents::Translators.new }
+        .to raise_error(Transifex::MissingParametersError)
+        .with_message("The following attributes are missing: project_slug")
     end
   end
 
   describe "Fetch" do
-    it "should not raise an error and retrieve the language's informations" do
-      language_coordinators_infos = nil
-      expect{ language_coordinators_infos = @project.language('en').translators.fetch }.to_not raise_error
-      expect(language_coordinators_infos).to be_a_kind_of(Hash)
-      expect(language_coordinators_infos.keys).to contain_exactly("translators")
+    it "retrieves the language translators" do
+      VCR.use_cassette "project/language/fetch_translators" do
+        expect(project.language("en").translators.fetch).to eq({"translators" => []})
+      end
     end
   end
 
   describe "Update" do
-    it "should not raise an error and update the coordinators list" do
-      expect{ @project.language('en').translators.update(['fredericgrais'])}.to_not raise_error
+    it "updates the translators list" do
+      VCR.use_cassette "project/language/update_translators" do
+        expect(project.language("en").translators.update(["mupo"])).to eq "OK"
+        expect(project.language("en").translators.fetch).to eq({"translators" => ["mupo"]})
+      end
     end
 
-    it "should raise an error if the coordinator doesn't exist" do
-      expect{ @project.language('en').translators.update(['grgrgef'])}.to raise_error(Transifex::TransifexError)
+    it "raises an error if the translator doesn't exist" do
+      VCR.use_cassette "project/language/update_non_existing_translator" do
+        expect { project.language("en").translators.update(["not_existing_translator"]) }
+          .to raise_error(Transifex::TransifexError)
+          .with_message("Users not_existing_translator do not exist.")
+      end
     end
   end
 end

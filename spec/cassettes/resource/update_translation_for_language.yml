@@ -1,0 +1,62 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: http://www.transifex.com/api/2/project/ruby-client/resource/test/translation/en
+    body:
+      encoding: UTF-8
+      string: '{"i18n_type":"YAML","content":"en:  \n  routes:\n    mercury_editor:
+        mercury_editor\n  date:\n    abbr_day_names:\n    - Sun\n    - Mon\n    -
+        Tue\n    - Wed\n    - Thu\n    - Fri\n    - Sat\n    abbr_month_names:\n    -\n    -
+        Jan\n    - Feb\n    - Mar\n    - Apr\n    - May\n    - Jun\n    - Jul\n    -
+        Aug\n    - Sep\n    - Oct\n    - Nov\n    - Dec"}'
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      User-Agent:
+      - Transifex-interface-ruby/0.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Authorization:
+      - Basic bS5naWFtYml0dG9AZnJlZWdvd2ViLml0Om1vbGxpXzAx
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Vary:
+      - Accept-Encoding
+      - Authorization, Host, Accept-Language, Cookie
+      Cache-Control:
+      - max-age=0
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Thu, 04 May 2017 09:59:01 GMT
+      Expires:
+      - Thu, 04 May 2017 09:59:01 GMT
+      Transfer-Encoding:
+      - chunked
+      Content-Language:
+      - en
+      X-Content-Type-Options:
+      - nosniff
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - X-Mapping-fjhppofk=2F71BA404CBE394603A72279804CAC7D; path=/
+      Last-Modified:
+      - Thu, 04 May 2017 09:59:01 GMT
+      X-Frame-Options:
+      - SAMEORIGIN
+    body:
+      encoding: ASCII-8BIT
+      string: "{\n    \"strings_added\": 0, \n    \"strings_updated\": 0, \n    \"strings_delete\":
+        0, \n    \"redirect\": \"/freego/ruby-client/test/\"\n}"
+    http_version: 
+  recorded_at: Thu, 04 May 2017 09:59:01 GMT
+recorded_with: VCR 3.0.3

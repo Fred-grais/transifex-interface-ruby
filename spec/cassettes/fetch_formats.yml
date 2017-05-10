@@ -1,0 +1,121 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://www.transifex.com/api/2/formats
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      User-Agent:
+      - Transifex-interface-ruby/0.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Authorization:
+      - Basic bS5naWFtYml0dG9AZnJlZWdvd2ViLml0Om1vbGxpXzAx
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Vary:
+      - Accept-Encoding
+      - Authorization, Host, Accept-Language, Cookie
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Fri, 28 Apr 2017 14:51:05 GMT
+      Transfer-Encoding:
+      - chunked
+      Content-Language:
+      - en
+      X-Content-Type-Options:
+      - nosniff
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - X-Mapping-fjhppofk=371E5B112B2394FA3017E8BE0809059C; path=/
+      X-Frame-Options:
+      - SAMEORIGIN
+    body:
+      encoding: ASCII-8BIT
+      string: "{\n    \"SUB\": {\n        \"mimetype\": \"text/plain\", \n        \"file-extensions\":
+        \".sub\", \n        \"description\": \"SubViewer subtitles\"\n    }, \n    \"RESX\":
+        {\n        \"mimetype\": \"application/xml\", \n        \"file-extensions\":
+        \".resx, .aspx, .resw\", \n        \"description\": \".NET Resource Files\"\n
+        \   }, \n    \"DTD\": {\n        \"mimetype\": \"text/xml\", \n        \"file-extensions\":
+        \".dtd\", \n        \"description\": \"Mozilla DTD File\"\n    }, \n    \"PHP_INI\":
+        {\n        \"mimetype\": \"text/plain\", \n        \"file-extensions\": \".ini\",
+        \n        \"description\": \"PHP INI Files\"\n    }, \n    \"XLIFF\": {\n
+        \       \"mimetype\": \"text/xml\", \n        \"file-extensions\": \".xlf,
+        .xliff, .xml\", \n        \"description\": \"XLIFF file\"\n    }, \n    \"CMS\":
+        {\n        \"mimetype\": \"text/plain\", \n        \"file-extensions\": \".cms\",
+        \n        \"description\": \"CMS content\"\n    }, \n    \"REQUIREJS\": {\n
+        \       \"mimetype\": \"application/javascript\", \n        \"file-extensions\":
+        \".js\", \n        \"description\": \"RequireJS files\"\n    }, \n    \"KEYVALUEJSON\":
+        {\n        \"mimetype\": \"application/json\", \n        \"file-extensions\":
+        \".json\", \n        \"description\": \"Key-value JSON Files\"\n    }, \n
+        \   \"MIF\": {\n        \"mimetype\": \"text/plain\", \n        \"file-extensions\":
+        \".mif\", \n        \"description\": \"Adobe Framemaker Files\"\n    }, \n
+        \   \"CHROME\": {\n        \"mimetype\": \"text/plain\", \n        \"file-extensions\":
+        \".json\", \n        \"description\": \"Chrome i18n JSON files\"\n    }, \n
+        \   \"PHP_DEFINE\": {\n        \"mimetype\": \"text/plain\", \n        \"file-extensions\":
+        \".php\", \n        \"description\": \"PHP DEFINE statements\"\n    }, \n
+        \   \"STRINGS\": {\n        \"mimetype\": \"text/plain; charset=UTF-16\",
+        \n        \"file-extensions\": \".strings\", \n        \"description\": \"Apple
+        Strings File\"\n    }, \n    \"MOZILLAPROPERTIES\": {\n        \"mimetype\":
+        \"text/plain\", \n        \"file-extensions\": \".properties\", \n        \"description\":
+        \"Mozilla PROPERTIES file\"\n    }, \n    \"HTML\": {\n        \"mimetype\":
+        \"text/plain\", \n        \"file-extensions\": \".html\", \n        \"description\":
+        \"HTML files\"\n    }, \n    \"ANDROID\": {\n        \"mimetype\": \"application/xml\",
+        \n        \"file-extensions\": \".xml\", \n        \"description\": \"Android
+        String Resources\"\n    }, \n    \"TXT\": {\n        \"mimetype\": \"text/plain\",
+        \n        \"file-extensions\": \".txt\", \n        \"description\": \"Plain
+        text files\"\n    }, \n    \"PO\": {\n        \"mimetype\": \"text/x-po, application/x-gettext,
+        application/x-po\", \n        \"file-extensions\": \".po, .pot\", \n        \"description\":
+        \"PO File\"\n    }, \n    \"WIKI\": {\n        \"mimetype\": \"text/plain\",
+        \n        \"file-extensions\": \".wiki\", \n        \"description\": \"WIKI
+        file\"\n    }, \n    \"XLSX\": {\n        \"mimetype\": \"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet\",
+        \n        \"file-extensions\": \".xlsx, .xlsm, .xltx, .xltm\", \n        \"description\":
+        \"MS XLSX\"\n    }, \n    \"DOCX\": {\n        \"mimetype\": \"application/vnd.openxmlformats-officedocument.wordprocessingml.document\",
+        \n        \"file-extensions\": \".docx\", \n        \"description\": \"Microsoft
+        Word files (docx-alpha)\"\n    }, \n    \"PROPERTIESXML\": {\n        \"mimetype\":
+        \"application/xml\", \n        \"file-extensions\": \".xml\", \n        \"description\":
+        \"XML Properties Files\"\n    }, \n    \"SRT\": {\n        \"mimetype\": \"text/plain\",
+        \n        \"file-extensions\": \".srt\", \n        \"description\": \"SubRip
+        subtitles\"\n    }, \n    \"DESKTOP\": {\n        \"mimetype\": \"application/x-desktop\",
+        \n        \"file-extensions\": \".desktop\", \n        \"description\": \"Desktop
+        Entry File\"\n    }, \n    \"XHTML\": {\n        \"mimetype\": \"text/plain\",
+        \n        \"file-extensions\": \".xhtml\", \n        \"description\": \"XHTML
+        files\"\n    }, \n    \"RESJSON\": {\n        \"mimetype\": \"application/json\",
+        \n        \"file-extensions\": \".resjson\", \n        \"description\": \".NET
+        JSON Resource Files\"\n    }, \n    \"YML\": {\n        \"mimetype\": \"text/plain\",
+        \n        \"file-extensions\": \".yml, .yaml\", \n        \"description\":
+        \"YAML Files\"\n    }, \n    \"UNICODEPROPERTIES\": {\n        \"mimetype\":
+        \"text/plain\", \n        \"file-extensions\": \".properties\", \n        \"description\":
+        \"Java PROPERTIES file - Unicode\"\n    }, \n    \"PHP_ALT_ARRAY\": {\n        \"mimetype\":
+        \"text/plain\", \n        \"file-extensions\": \".php\", \n        \"description\":
+        \"PHP Alternative Array Files\"\n    }, \n    \"SBV\": {\n        \"mimetype\":
+        \"text/plain\", \n        \"file-extensions\": \".sbv\", \n        \"description\":
+        \"Youtube captions\"\n    }, \n    \"QT\": {\n        \"mimetype\": \"application/xml\",
+        \n        \"file-extensions\": \".ts\", \n        \"description\": \"Qt File\"\n
+        \   }, \n    \"MAGENTO\": {\n        \"mimetype\": \"text/plain\", \n        \"file-extensions\":
+        \".csv\", \n        \"description\": \"Magento CSV File\"\n    }, \n    \"INI\":
+        {\n        \"mimetype\": \"text/plain\", \n        \"file-extensions\": \".ini\",
+        \n        \"description\": \"Joomla INI File\"\n    }, \n    \"PHP_ARRAY\":
+        {\n        \"mimetype\": \"text/plain\", \n        \"file-extensions\": \".php\",
+        \n        \"description\": \"PHP Array Files\"\n    }, \n    \"PLIST\": {\n
+        \       \"mimetype\": \"text/plain\", \n        \"file-extensions\": \".plist\",
+        \n        \"description\": \"Apple PLIST files\"\n    }, \n    \"PROPERTIES\":
+        {\n        \"mimetype\": \"text/plain; charset=ISO-8859-1\", \n        \"file-extensions\":
+        \".properties\", \n        \"description\": \"Java PROPERTIES File - Latin
+        1\"\n    }\n}"
+    http_version: 
+  recorded_at: Fri, 28 Apr 2017 14:51:05 GMT
+recorded_with: VCR 3.0.3

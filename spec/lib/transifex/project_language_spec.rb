@@ -1,49 +1,62 @@
-require_relative '../../spec_helper'
+require "spec_helper"
 
 describe Transifex::ProjectComponents::Language do
-  before(:all) do
-    @project = Transifex::Project.new("projet-de-test-1")
-  end
+  let(:project) { Transifex::Project.new("ruby-client") }
 
-  describe "Instanciation" do
-    it "should raise an error when no parameters given" do
-      expect{ Transifex::ProjectComponents::Language.new }.to raise_error(Transifex::MissingParametersError)
+  describe "Instantiation" do
+    it "should raise an error if the project_slug is not provided" do
+      expect { Transifex::ProjectComponents::Language.new }.to raise_error(Transifex::MissingParametersError)
+        .with_message("The following attributes are missing: project_slug")
     end
   end
 
   describe "Fetch" do
-    it "should not raise an error and retrieve the language's informations without details" do
-      project_language_infos = nil
-      expect{ project_language_infos = @project.language('en').fetch }.to_not raise_error
-      expect(project_language_infos).to be_a_kind_of(Hash)
-      expect(project_language_infos.keys).to contain_exactly("coordinators", "translators", "reviewers")
+    describe "#fetch" do
+      it "should retrieve the basic info for the language" do
+        VCR.use_cassette "project/language/fetch_language_info" do
+          expect(project.language("en").fetch).to eq(basic_language_info)
+        end
+      end
     end
 
-    it "should not raise an error and retrieve the language's informations with details" do
-      project_language_infos = nil
-      expect{ project_language_infos = @project.language('en').fetch_with_details }.to_not raise_error
-      expect(project_language_infos).to be_a_kind_of(Hash)
-      expect(project_language_infos.keys).to contain_exactly("coordinators", "reviewers", "total_segments", "untranslated_segments", "translated_words", "reviewed_segments", "translators","translated_segments")
+    describe "#fetch_with_details" do
+      it "retrieve the complete info for the language" do
+        VCR.use_cassette "project/language/fetch_with_details_language_info" do
+          expect(project.language("en").fetch_with_details).to eq(detailed_language_info)
+        end
+      end
     end
   end
 
   describe "Update" do
-    it "should raise an error if language doesn't exist " do
-      expect{ @project.language('dzdzadaz').update({:coordinators => ['fredericgrais'], :translators => ['fredericgrais'], :reviewers => ['fredericgrais']}) }.to raise_error(Transifex::TransifexError)
+    it "should raise an error if the language doesn't exist" do
+      params = {coordinators: []}
+
+      VCR.use_cassette "project/language/update_non_existing_language" do
+        expect { project.language("non_existing_language").update(params) }.to raise_error(Transifex::TransifexError)
+          .with_message("Not Found")
+      end
     end
 
-    it "should not raise an error and update the language's infos " do
-      expect{ @project.language('fr').update({:coordinators => ['fredericgrais'], :translators => ['fredericgrais'], :reviewers => ['fredericgrais']}) }.to_not raise_error
+    it "should update the language info" do
+      params = {"coordinators" => ["nirnaeth"], "translators" => [], "reviewers" => ["wirido"]}
+
+      VCR.use_cassette "project/language/update_language" do
+        expect(project.language("en").update(params)).to eq "OK"
+        expect(project.language("en").fetch).to eq params
+      end
     end
   end
 
   describe "Delete" do
-    before(:all) do
-      @project.languages.create({:language_code => "it", :coordinators => ['fredericgrais']})
-    end
+    it "should delete the language" do
+      VCR.use_cassette "project/language/delete_language" do
+        project.languages.create(language_code: "it", coordinators: ["wirido"])
 
-    it "should delete the resource without raising an error" do
-      expect{ @project.language('it').delete }.to_not raise_error
+        expect(project.language("it").delete).to be nil
+        expect { project.language("it").fetch }.to raise_error(Transifex::TransifexError)
+          .with_message("Forbidden")
+      end
     end
   end
 end

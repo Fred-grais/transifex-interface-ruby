@@ -1,0 +1,111 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://www.transifex.com/api/2/projects
+    body:
+      encoding: UTF-8
+      string: '{"slug":"private-ruby-client","name":"Private Ruby Client","description":"Private
+        Ruby Client","source_language_code":"eo","private":true}'
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      User-Agent:
+      - Transifex-interface-ruby/0.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Authorization:
+      - Basic bS5naWFtYml0dG9AZnJlZWdvd2ViLml0Om1vbGxpXzAx
+  response:
+    status:
+      code: 201
+      message: CREATED
+    headers:
+      Server:
+      - nginx
+      Vary:
+      - Authorization, Host, Accept-Language, Cookie
+      Cache-Control:
+      - max-age=0
+      Content-Type:
+      - text/plain
+      Date:
+      - Wed, 03 May 2017 14:46:16 GMT
+      Expires:
+      - Wed, 03 May 2017 14:46:16 GMT
+      Transfer-Encoding:
+      - chunked
+      Content-Language:
+      - en
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - X-Mapping-fjhppofk=2F71BA404CBE394603A72279804CAC7D; path=/
+      Last-Modified:
+      - Wed, 03 May 2017 14:46:16 GMT
+      X-Frame-Options:
+      - SAMEORIGIN
+    body:
+      encoding: UTF-8
+      string: Created
+    http_version:
+  recorded_at: Wed, 03 May 2017 14:46:17 GMT
+- request:
+    method: get
+    uri: http://www.transifex.com/api/2/project/private-ruby-client
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      User-Agent:
+      - Transifex-interface-ruby/0.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Authorization:
+      - Basic bS5naWFtYml0dG9AZnJlZWdvd2ViLml0Om1vbGxpXzAx
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Vary:
+      - Accept-Encoding
+      - Authorization, Host, Accept-Language, Cookie
+      Cache-Control:
+      - max-age=0
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Wed, 03 May 2017 14:46:17 GMT
+      Expires:
+      - Wed, 03 May 2017 14:46:17 GMT
+      Transfer-Encoding:
+      - chunked
+      Content-Language:
+      - en
+      X-Content-Type-Options:
+      - nosniff
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - X-Mapping-fjhppofk=978A30C321AEE9D0F95E25198189AC99; path=/
+      Last-Modified:
+      - Wed, 03 May 2017 14:46:17 GMT
+      X-Frame-Options:
+      - SAMEORIGIN
+    body:
+      encoding: ASCII-8BIT
+      string: "{\n    \"description\": \"Private Ruby Client\", \n    \"source_language_code\":
+        \"eo\", \n    \"slug\": \"private-ruby-client\", \n    \"name\": \"Private
+        Ruby Client\"\n}"
+    http_version:
+  recorded_at: Wed, 03 May 2017 14:46:17 GMT
+recorded_with: VCR 3.0.3

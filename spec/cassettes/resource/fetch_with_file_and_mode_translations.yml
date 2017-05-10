@@ -1,0 +1,56 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://www.transifex.com/api/2/project/ruby-client/resource/test/translation/en?file=true&mode=translator
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Content-Type:
+      - application/json
+      Accept:
+      - application/json
+      User-Agent:
+      - Transifex-interface-ruby/0.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Authorization:
+      - Basic bS5naWFtYml0dG9AZnJlZWdvd2ViLml0Om1vbGxpXzAx
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Cache-Control:
+      - max-age=0
+      Content-Type:
+      - text/plain
+      Date:
+      - Thu, 04 May 2017 08:59:32 GMT
+      Expires:
+      - Thu, 04 May 2017 08:59:32 GMT
+      Accept-Ranges:
+      - bytes
+      X-Content-Type-Options:
+      - nosniff
+      Content-Disposition:
+      - attachment; filename=UTF-8''updated%20name_en.yml
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - X-Mapping-fjhppofk=A44BEC4CD0B51682CDC2AA3E9CCFDDF4; path=/
+      Last-Modified:
+      - Thu, 04 May 2017 08:59:32 GMT
+      Content-Length:
+      - '22'
+    body:
+      encoding: UTF-8
+      string: |
+        en:
+          test_string: ""
+    http_version: 
+  recorded_at: Thu, 04 May 2017 08:59:32 GMT
+recorded_with: VCR 3.0.3
