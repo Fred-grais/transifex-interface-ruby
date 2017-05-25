@@ -13,7 +13,7 @@ module Transifex
       @resource_slug = resource_slug
     end
 
-    def self.parents
+    def self.authors
       [:project]      
     end  
 

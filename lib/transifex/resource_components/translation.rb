@@ -15,7 +15,7 @@ module Transifex
         @translation_slug = translation_slug
       end
 
-      def self.parents
+      def self.authors
         [:project, :resource]      
       end 
 

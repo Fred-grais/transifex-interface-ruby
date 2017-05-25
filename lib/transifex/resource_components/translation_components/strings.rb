@@ -21,7 +21,7 @@ module Transifex
           self.fetch(options)      
         end
 
-        def self.parents
+        def self.authors
           [:project, :resource, :translation]            
         end  
 

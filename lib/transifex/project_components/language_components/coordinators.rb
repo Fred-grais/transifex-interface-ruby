@@ -14,7 +14,7 @@ module Transifex
           @language_slug = language_code
         end
 
-        def self.parents
+        def self.authors
           [:project, :language]
         end
 

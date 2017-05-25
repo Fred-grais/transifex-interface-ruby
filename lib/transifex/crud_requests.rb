@@ -4,8 +4,8 @@ module Transifex
       def generate_url(object, params = {})
         class_name_string = object.class.name.split("::").last.downcase.to_s
         url = ""
-        if object.class.respond_to?(:parents)
-          object.class.parents.map{|parent| url += "/" + parent.to_s + "/" + object.instance_variable_get("@" + parent.to_s + "_slug")}                      
+        if object.class.respond_to?(:authors)
+          object.class.authors.map{|author| url += "/" + author.to_s + "/" + object.instance_variable_get("@" + author.to_s + "_slug")}                      
         end          
         url += "/" + class_name_string
         url += "/" + object.instance_variable_get("@" + class_name_string + "_slug") if object.instance_variable_defined?("@" + class_name_string + "_slug")
