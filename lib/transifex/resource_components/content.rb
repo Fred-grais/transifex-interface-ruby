@@ -12,7 +12,7 @@ module Transifex
         @project_slug = project_slug
         @resource_slug = resource_slug
       end
-      def self.parents
+      def self.authors
         [:project, :resource]      
       end
       def fetch_with_file(path_to_file = nil)

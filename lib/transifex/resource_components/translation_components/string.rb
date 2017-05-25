@@ -20,7 +20,7 @@ module Transifex
           @string_slug = compute_source_entity_hash(translation_key, translation_context)
         end
 
-        def self.parents
+        def self.authors
           [:project, :resource, :translation]            
         end
       end

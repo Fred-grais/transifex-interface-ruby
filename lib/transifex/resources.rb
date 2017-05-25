@@ -12,7 +12,7 @@ module Transifex
       @project_slug = project_slug
     end
 
-    def self.parents
+    def self.authors
       [:project]      
     end 
   end

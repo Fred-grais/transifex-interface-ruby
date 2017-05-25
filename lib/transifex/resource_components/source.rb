@@ -15,7 +15,7 @@ module Transifex
         @resource_slug = resource_slug
         @source_slug = compute_source_entity_hash(translation_key, translation_context)
       end
-      def self.parents
+      def self.authors
         [:project, :resource]      
       end
     end
