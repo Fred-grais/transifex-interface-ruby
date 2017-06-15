@@ -63,16 +63,18 @@ module Transifex
     module Update
       module InstanceMethods
         def update(params = {}, options = {})      
-          if params.is_a?(Hash) && params[:i18n_type] && params[:i18n_type] != "TXT"
-            case params[:i18n_type]
-            when "YML"
-              params[:content] = YAML::load_file(params[:content]).to_yaml
-            when "KEYVALUEJSON"
-              params[:content] = params[:content].to_json
-            else
-              file = File.open(params[:content], "rb")
-              params[:content] = file.read
-              file.close
+          if params.is_a?(Hash) && params[:i18n_type]
+            unless options[:trad_from_file].nil?
+              case params[:i18n_type]
+              when "YML"
+                params[:content] = YAML::load_file(params[:content]).to_yaml
+              when "KEYVALUEJSON"
+                params[:content] = params[:content].to_json
+              else
+                file = File.open(params[:content], "rb")
+                params[:content] = file.read
+                file.close
+              end
             end
 
             # Deal with accents

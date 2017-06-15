@@ -28,18 +28,22 @@ describe Transifex::ResourceComponents::Content do
 
   describe "Update" do
     it "updates a resource using a file" do
+      params = { i18n_type: "YAML", content: get_yaml_source_trad_file_path("eo") }
+      options = { trad_from_file: true }
+
       VCR.use_cassette "resource/update_content_yml" do
-        expect(resource.content.update(i18n_type: "YAML", content: get_yaml_source_trad_file_path("eo")))
+        expect(resource.content.update(params, options))
           .to eq updated_resource_with_file
       end
     end
 
     it "updates a resource using json" do
       json_resource = project.resource("json")
-      content = {test_string: 'test string as json'}
+      params = {i18n_type: "KEYVALUEJSON", content: {test_string: 'test string as json'}}
+      options = { trad_from_file: true }
 
       VCR.use_cassette "resource/update_content_json" do
-        expect(json_resource.content.update(i18n_type: "KEYVALUEJSON", content: content))
+        expect(json_resource.content.update(params, options))
           .to eq updated_resource_with_json
       end
     end

@@ -333,7 +333,9 @@ project_resource.content.update({:i18n_type => "TXT", :content => 'new_content'}
 With a file:
 
 ```ruby
-project_resource.content.update({:i18n_type => "YAML", :content => 'path/to/your/file.yml'})
+params = {:i18n_type => "YAML", :content => 'path/to/your/file.yml'}
+options = {:trad_from_file => true}
+project_resource.content.update(params, options)
 ```
 
 ### Resource Translations
