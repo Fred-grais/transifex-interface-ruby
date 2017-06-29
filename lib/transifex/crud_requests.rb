@@ -64,8 +64,8 @@ module Transifex
       module InstanceMethods
         def update(params = {}, options = {})
           if params.is_a?(Hash) && params[:i18n_type]
-            unless options[:trad_from_file].nil?
-              case
+            if options[:trad_from_file]
+              case params[:i18n_type]
               when "YML"
                 params[:content] = YAML::load_file(params[:content]).to_yaml
               else
