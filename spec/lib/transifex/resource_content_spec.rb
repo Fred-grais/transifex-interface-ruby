@@ -40,10 +40,9 @@ describe Transifex::ResourceComponents::Content do
     it "updates a resource using json" do
       json_resource = project.resource("json")
       params = {i18n_type: "KEYVALUEJSON", content: {test_string: 'test string as json'}}
-      options = { trad_from_file: true }
 
       VCR.use_cassette "resource/update_content_json" do
-        expect(json_resource.content.update(params, options))
+        expect(json_resource.content.update(params))
           .to eq updated_resource_with_json
       end
     end
