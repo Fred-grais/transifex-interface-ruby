@@ -44,7 +44,7 @@ module Transifex
     def query_api(method, url, params={})
       uri = build_request_url(url)
 
-      res = Net::HTTP.start(uri.host, 80) do |http|
+      res = Net::HTTP.start(uri.host, uri.port, use_ssl: true) do |http|
         req = Net::HTTP::const_get(method.capitalize).new(uri.request_uri, request_headers)
         req.basic_auth self.configuration.client_login, self.configuration.client_secret
         req.body = Transifex::JSON.dump(params)
